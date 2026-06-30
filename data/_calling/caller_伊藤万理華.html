@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>伊藤万理華 が呼んでいる呼び名</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #1a0a2e;
+  color: #f0e8ff;
+  font-family: "Yu Gothic UI", "Meiryo", sans-serif;
+  min-height: 100vh;
+}
+header {
+  background: linear-gradient(135deg, #6b21a8, #9333ea, #c026d3);
+  padding: 24px 20px 20px;
+  box-shadow: 0 4px 20px rgba(147,51,234,0.45);
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.back-btn, .nav-btn {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  font-weight: bold;
+  text-decoration: none;
+}
+.back-btn {
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 0.85rem;
+  transition: background 0.15s;
+}
+.back-btn:hover { background: rgba(255,255,255,0.28); }
+h1 {
+  font-size: 1.4rem;
+  font-weight: 900;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.member-nav {
+  max-width: 1100px;
+  margin: 14px auto 0;
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.nav-btn {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #2d1b4e;
+  border: 1px solid #5b21b6;
+  color: #c084fc;
+  font-size: 0.85rem;
+  transition: background 0.15s, border-color 0.15s;
+}
+.nav-btn:hover { background: #4c1d95; border-color: #c084fc; color: #fff; }
+.nav-placeholder { display: inline-block; width: 1px; }
+.mode-switch {
+  display: inline-flex;
+  overflow: hidden;
+  border: 1px solid #7c3aed;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.18);
+}
+.mode-tab {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 6px 14px;
+  color: #d8b4fe;
+  font-size: 0.85rem;
+  font-weight: 900;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.mode-tab.active {
+  background: #f5f3ff;
+  color: #5b21b6;
+}
+.summary-panel, .year-bar, .filter-panel, main {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.summary-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+  margin-top: 16px;
+}
+.summary-card {
+  background: rgba(0,0,0,0.22);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.summary-label { display: block; color: #c4b5fd; font-size: .74rem; }
+.summary-value { display: block; margin-top: 3px; font-size: 1.1rem; font-weight: 900; color: #fff; }
+.summary-value.mini { font-size: 0.92rem; line-height: 1.35; }
+.year-bar, .filter-panel {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+  align-items: center;
+}
+.year-bar {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.year-bar-label {
+  font-size: 0.85rem;
+  color: #d8b4fe;
+  font-weight: bold;
+  margin-right: 4px;
+}
+.filter-panel {
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+.yr-btn, #clear-filters {
+  border: 2px solid #4c1d95;
+  background: #2d1b4e;
+  color: #c084fc;
+  border-radius: 999px;
+  padding: 5px 14px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.yr-btn:hover, #clear-filters:hover { background: #4c1d95; border-color: #a855f7; color: #fff; }
+.yr-btn.active { background: #7c3aed; color: #fff; border-color: #c084fc; }
+.yr-btn span {
+  margin-left: 4px;
+  font-size: 0.72rem;
+  opacity: 0.8;
+}
+#page-search {
+  width: 100%;
+  border: 1px solid #5b21b6;
+  border-radius: 8px;
+  background: #2d1b4e;
+  color: #f0e8ff;
+  padding: 9px 14px;
+  font-size: 0.9rem;
+  outline: none;
+}
+main { padding-top: 18px; padding-bottom: 56px; }
+.table-wrap {
+  display: grid;
+  gap: 12px;
+}
+.target-gen-group {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 22px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(192,132,252,0.32);
+}
+.target-gen-group.hidden { display: none; }
+.gen-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.gen-badge {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: bold;
+  padding: 4px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(124,58,237,0.4);
+}
+.gen-line {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(to right, #c084fc, #7c3aed55, transparent);
+}
+.caller-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+.target-group {
+  border: 1px solid #cfd6df;
+  border-radius: 6px;
+  background: #ffffff;
+  overflow: hidden;
+}
+.target-group.hidden { display: none; }
+.target-group h2 {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+  padding: 10px 12px;
+  background: #f7f4fb;
+  font-size: 1rem;
+}
+.target-name { font-weight: 900; }
+.target-meta { color: #64748b; font-size: .82rem; font-weight: 700; white-space: nowrap; }
+table { width: 100%; border-collapse: collapse; }
+th, td {
+  border-bottom: 1px solid #d7dce3;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+th { color: #243447; background: #eef3f8; }
+.top-nickname-row {
+  background: #fff0ad;
+}
+.share-strong-row {
+  background: #e6f6ea;
+}
+.share-mid-row {
+  background: #f1faf3;
+}
+.top-nickname-row.share-strong-row {
+  background: #ffe9a6;
+}
+.nick-cell { font-weight: 700; }
+.count-cell { width: 90px; text-align: right; }
+.count-num { color: #1f2937; font-weight: 900; }
+.share-num {
+  display: block;
+  color: #a78bca;
+  font-size: 0.72rem;
+  font-weight: 800;
+  margin-top: 2px;
+}
+#no-match {
+  display: none;
+  max-width: 1100px;
+  margin: 16px auto 0;
+  padding: 0 16px;
+  color: #c4b5fd;
+  font-size: 0.9rem;
+}
+@media (max-width: 960px) {
+  .caller-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .caller-groups { grid-template-columns: 1fr; }
+}
+
+:root{--purple:#6f3fa7;--purple-dark:#4d257b;--purple-soft:#f4effa;--line:#d8cbe7;--text:#241d2e;--muted:#6e6378}body{background:#fff!important;color:var(--text)!important;font-family:'Yu Gothic UI','Meiryo',sans-serif!important}header{background:#fff!important;border-bottom:3px solid var(--purple)!important;box-shadow:none!important;padding:22px 0 14px!important}.header-inner,.member-nav,.summary-panel,.year-bar,.filter-panel,.view,.caller-summary,.caller-groups,.target-gen-group{width:min(1120px,calc(100% - 32px))!important;max-width:1120px!important;margin-left:auto!important;margin-right:auto!important}.header-inner{display:flex!important;align-items:center!important;gap:12px!important}h1{color:var(--text)!important;font-size:clamp(1.35rem,4vw,2rem)!important;letter-spacing:0!important}.back-btn,.nav-btn,.mode-tab,.yr-btn{border-radius:6px!important;box-shadow:none!important;text-decoration:none!important;min-height:36px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;text-align:center!important}.nav-btn{min-width:150px!important}.mode-switch{display:flex!important;gap:6px!important;align-items:stretch!important}.mode-tab{min-width:96px!important;padding:7px 12px!important}.back-btn,.nav-btn,.mode-tab{background:#fff!important;border:1px solid var(--purple)!important;color:var(--purple-dark)!important}.mode-tab.active,.yr-btn.active{background:var(--purple)!important;color:#fff!important;border-color:var(--purple)!important}.member-nav{background:#fff!important;border:1px solid var(--line)!important;border-radius:6px!important;box-shadow:none!important;margin-top:14px!important;padding:10px!important;display:grid!important;grid-template-columns:minmax(150px,1fr) auto minmax(150px,1fr)!important;gap:10px!important;align-items:center!important}.member-nav .nav-btn:first-child{justify-self:start!important}.member-nav .nav-btn:last-child{justify-self:end!important}.summary-panel,.caller-summary{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))!important;gap:10px!important;background:#fff!important;border:0!important;box-shadow:none!important;margin-top:16px!important}.summary-card{background:#fff!important;border:1px solid var(--line)!important;border-radius:4px!important;box-shadow:none!important;color:var(--text)!important}.summary-label,.target-meta,.hint{color:var(--muted)!important}.summary-value{color:var(--text)!important}.year-bar,.filter-panel{background:var(--purple-soft)!important;border:1px solid var(--line)!important;border-radius:4px!important;box-shadow:none!important;margin-top:14px!important}.yr-btn{background:#fff!important;border:1px solid var(--line)!important;color:var(--purple-dark)!important}.filter-panel input,.filter-panel select{border:1px solid var(--line)!important;border-radius:4px!important;background:#fff!important;color:var(--text)!important}.filter-panel button,#clear-filters{border:1px solid #7b5aa6!important;background:#fff!important;color:#4d257b!important;border-radius:6px!important;font-weight:800!important}.view{margin-top:14px!important}.table-wrap,table,.caller-group,.target-group{border-radius:6px!important;box-shadow:none!important}table{background:#ffffff!important;color:#1f2937!important;border-collapse:collapse!important;border:1px solid #cfd6df!important}th{background:#eef3f8!important;color:#243447!important}td,th{border-color:#d7dce3!important}.caller-group,.target-group{background:#fff!important;border:1px solid #cfd6df!important}.caller-group h2,.target-group h2{background:#f7f4fb!important;color:#1f2937!important;border-bottom:1px solid #d7dce3!important}.caller-group h2 *, .target-group h2 *{color:#1f2937!important}.nickname-table tr:nth-child(even),.caller-table tr:nth-child(even){background:#fafafa!important}.badge-paren,.caller-token.badge-paren{background:#eef2f7!important;color:#334155!important;border:1px solid #cbd5e1!important;border-radius:999px!important;padding:2px 7px!important}.badge-max,.caller-token.badge-max{background:#ffd166!important;color:#4a2c00!important;border:1px solid #c48700!important;border-radius:999px!important;font-weight:900!important;padding:2px 7px!important}.badge-other,.caller-token.badge-other{background:#e8f7ee!important;color:#14532d!important;border:1px solid #a7d7b8!important;border-radius:999px!important;padding:2px 7px!important}.count-num{color:#1f2937!important}.target-name{color:#1f2937!important}.target-meta{color:#64748b!important}.gen-badge{background:#fff!important;color:#4d257b!important;border:1px solid #8b5bc3!important}tbody tr{background:#ffffff!important}tbody tr:nth-child(even){background:#f8fafc!important}.top-nickname-row,.top-nickname-row td{background:#fff0ad!important}.top-nickname-row .count-num{color:#b45309!important;font-weight:900!important}.share-strong-row,.share-strong-row td{background:#e6f6ea!important}.share-mid-row,.share-mid-row td{background:#f1faf3!important}.top-nickname-row.share-strong-row,.top-nickname-row.share-strong-row td{background:#ffe9a6!important}.share-num{color:#475569!important}@media(max-width:560px){.header-inner,.member-nav,.summary-panel,.year-bar,.filter-panel,.view,.caller-summary,.caller-groups,.target-gen-group{width:min(100% - 20px,1120px)!important}.member-nav{display:grid!important;grid-template-columns:1fr!important}.nav-btn{min-width:0!important}.mode-switch{justify-content:center!important}.filter-panel{display:grid!important;grid-template-columns:1fr!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="back-btn" href="../../calling.html">呼び方へ戻る</a>
+    <h1>伊藤万理華 が呼んでいる呼び名</h1>
+  </div>
+</header>
+<div class="member-nav">
+  <a class='nav-btn' href='caller_伊藤寧々.html'>← 伊藤寧々</a>
+  <div class="mode-switch" aria-label="表示切替">
+    <a class="mode-tab" href="../_received/reverse_伊藤万理華.html">呼ばれ方</a>
+    <span class="mode-tab active">呼び方</span>
+  </div>
+  <a class='nav-btn' href='caller_井上小百合.html'>井上小百合 →</a>
+</div>
+<div class="summary-panel">
+  <div class="summary-card"><span class="summary-label">呼ばれている人</span><span class="summary-value" id="summary-targets">4</span></div>
+  <div class="summary-card"><span class="summary-label">呼び名行数</span><span class="summary-value" id="summary-nicks">4</span></div>
+  <div class="summary-card"><span class="summary-label">合計回数</span><span class="summary-value" id="summary-count">4</span></div>
+  <div class="summary-card"><span class="summary-label">最多相手</span><span class="summary-value mini">伊藤寧々 1回</span></div>
+  <div class="summary-card"><span class="summary-label">最多呼び名</span><span class="summary-value mini">さゆりん 1回</span></div>
+  <div class="summary-card"><span class="summary-label">最新年</span><span class="summary-value">2014</span></div>
+</div>
+<div class="year-bar">
+  <span class="year-bar-label">年：</span>
+      <button class='yr-btn active' data-view='ALL'>全期間 <span>4回</span></button>
+    <button class='yr-btn' data-view='2012'>2012 <span>2回</span></button>
+    <button class='yr-btn' data-view='2014'>2014 <span>2回</span></button>
+
+</div>
+<div class="filter-panel">
+  <input type="text" id="page-search" placeholder="呼ばれている人・呼び名で検索…" autocomplete="off">
+  <button type="button" id="clear-filters">条件クリア</button>
+</div>
+<div id="no-match">該当する呼び名が見つかりませんでした</div>
+<main>
+  <div class="table-wrap">
+    <div class="view" data-view="ALL"><section class='target-gen-group' data-gen='1期生'><div class='gen-header'><span class='gen-badge'>1期生</span><div class='gen-line'></div></div><div class='caller-groups'><section class='target-group' data-target='伊藤寧々' data-search='伊藤寧々 1期生 寧々' data-nicks='1' data-total='1'><h2><span class='target-name'>伊藤寧々</span><span class='target-meta'>1期生 / 1呼び名 / 1回</span></h2><table><thead><tr><th>呼び名</th><th>回数</th></tr></thead><tbody><tr data-nick='寧々' data-total='1' data-share='100'><td class='nick-cell'>寧々</td><td class='count-cell'><span class='count-num'>1</span><span class='share-num'>100%</span></td></tr></tbody></table></section><section class='target-group' data-target='斉藤優里' data-search='斉藤優里 1期生 ゆったん' data-nicks='1' data-total='1'><h2><span class='target-name'>斉藤優里</span><span class='target-meta'>1期生 / 1呼び名 / 1回</span></h2><table><thead><tr><th>呼び名</th><th>回数</th></tr></thead><tbody><tr data-nick='ゆったん' data-total='1' data-share='100'><td class='nick-cell'>ゆったん</td><td class='count-cell'><span class='count-num'>1</span><span class='share-num'>100%</span></td></tr></tbody></table></section><section class='target-group' data-target='松村沙友理' data-search='松村沙友理 1期生 さゆりん' data-nicks='1' data-total='1'><h2><span class='target-name'>松村沙友理</span><span class='target-meta'>1期生 / 1呼び名 / 1回</span></h2><table><thead><tr><th>呼び名</th><th>回数</th></tr></thead><tbody><tr data-nick='さゆりん' data-total='1' data-share='100'><td class='nick-cell'>さゆりん</td><td class='count-cell'><span class='count-num'>1</span><span class='share-num'>100%</span></td></tr></tbody></table></section></div></section><section class='target-gen-group' data-gen='2期生'><div class='gen-header'><span class='gen-badge'>2期生</span><div class='gen-line'></div></div><div class='caller-groups'><section class='target-group' data-target='新内眞衣' data-search='新内眞衣 2期生 まいちゅん' data-nicks='1' data-total='1'><h2><span class='target-name'>新内眞衣</span><span class='target-meta'>2期生 / 1呼び名 / 1回</span></h2><table><thead><tr><th>呼び名</th><th>回数</th></tr></thead><tbody><tr data-nick='まいちゅん' data-total='1' data-share='100'><td class='nick-cell'>まいちゅん</td><td class='count-cell'><span class='count-num'>1</span><span class='share-num'>100%</span></td></tr></tbody></table></section></div></section></div>
+    <div class='view' data-view='2012' style='display:none;'><section class='target-gen-group' data-gen='1期生'><div class='gen-header'><span class='gen-badge'>1期生</span><div class='gen-line'></div></div><div class='caller-groups'><section class='target-group' data-target='斉藤優里' data-search='斉藤優里 1期生 ゆったん' data-nicks='1' data-total='1'><h2><span class='target-name'>斉藤優里</span><span class='target-meta'>1期生 / 1呼び名 / 1回</span></h2><table><thead><tr><th>呼び名</th><th>回数</th></tr></thead><tbody><tr data-nick='ゆったん' data-total='1' data-share='100'><td class='nick-cell'>ゆったん</td><td class='count-cell'><span class='count-num'>1</span><span class='share-num'>100%</span></td></tr></tbody></table></section><section class='target-group' data-target='松村沙友理' data-search='松村沙友理 1期生 さゆりん' data-nicks='1' data-total='1'><h2><span class='target-name'>松村沙友理</span><span class='target-meta'>1期生 / 1呼び名 / 1回</span></h2><table><thead><tr><th>呼び名</th><th>回数</th></tr></thead><tbody><tr data-nick='さゆりん' data-total='1' data-share='100'><td class='nick-cell'>さゆりん</td><td class='count-cell'><span class='count-num'>1</span><span class='share-num'>100%</span></td></tr></tbody></table></section></div></section></div><div class='view' data-view='2014' style='display:none;'><section class='target-gen-group' data-gen='1期生'><div class='gen-header'><span class='gen-badge'>1期生</span><div class='gen-line'></div></div><div class='caller-groups'><section class='target-group' data-target='伊藤寧々' data-search='伊藤寧々 1期生 寧々' data-nicks='1' data-total='1'><h2><span class='target-name'>伊藤寧々</span><span class='target-meta'>1期生 / 1呼び名 / 1回</span></h2><table><thead><tr><th>呼び名</th><th>回数</th></tr></thead><tbody><tr data-nick='寧々' data-total='1' data-share='100'><td class='nick-cell'>寧々</td><td class='count-cell'><span class='count-num'>1</span><span class='share-num'>100%</span></td></tr></tbody></table></section></div></section><section class='target-gen-group' data-gen='2期生'><div class='gen-header'><span class='gen-badge'>2期生</span><div class='gen-line'></div></div><div class='caller-groups'><section class='target-group' data-target='新内眞衣' data-search='新内眞衣 2期生 まいちゅん' data-nicks='1' data-total='1'><h2><span class='target-name'>新内眞衣</span><span class='target-meta'>2期生 / 1呼び名 / 1回</span></h2><table><thead><tr><th>呼び名</th><th>回数</th></tr></thead><tbody><tr data-nick='まいちゅん' data-total='1' data-share='100'><td class='nick-cell'>まいちゅん</td><td class='count-cell'><span class='count-num'>1</span><span class='share-num'>100%</span></td></tr></tbody></table></section></div></section></div>
+  </div>
+</main>
+<script>
+(function(){
+  const btns = Array.from(document.querySelectorAll('.yr-btn'));
+  const views = Array.from(document.querySelectorAll('.view'));
+  const searchInput = document.getElementById('page-search');
+  const clearFilters = document.getElementById('clear-filters');
+  const noMatch = document.getElementById('no-match');
+  const summaryTargets = document.getElementById('summary-targets');
+  const summaryNicks = document.getElementById('summary-nicks');
+  const summaryCount = document.getElementById('summary-count');
+  let activeView = 'ALL';
+
+  function norm(value) {
+    return (value || '').normalize('NFKC').toLowerCase().trim();
+  }
+
+  function visibleGroups() {
+    const view = document.querySelector(`.view[data-view="${activeView}"]`);
+    return view ? Array.from(view.querySelectorAll('.target-group')) : [];
+  }
+
+  function applyFilters() {
+    const q = norm(searchInput.value);
+    let visibleTargets = 0;
+    let visibleNicks = 0;
+    let total = 0;
+    visibleGroups().forEach(group => {
+      const haystack = norm(group.dataset.search || group.textContent);
+      const show = !q || haystack.includes(q);
+      group.classList.toggle('hidden', !show);
+      if (show) {
+        visibleTargets += 1;
+        visibleNicks += parseInt(group.dataset.nicks || '0', 10) || 0;
+        total += parseInt(group.dataset.total || '0', 10) || 0;
+      }
+    });
+    const active = document.querySelector(`.view[data-view="${activeView}"]`);
+    if (active) {
+      active.querySelectorAll('.target-gen-group').forEach(section => {
+        const hasVisible = Array.from(section.querySelectorAll('.target-group')).some(group => !group.classList.contains('hidden'));
+        section.classList.toggle('hidden', !hasVisible);
+      });
+    }
+    summaryTargets.textContent = visibleTargets;
+    summaryNicks.textContent = visibleNicks;
+    summaryCount.textContent = total;
+    noMatch.style.display = visibleTargets === 0 ? 'block' : 'none';
+  }
+
+  function show(view) {
+    activeView = view;
+    views.forEach(el => el.style.display = (el.dataset.view === view) ? 'block' : 'none');
+    btns.forEach(btn => btn.classList.toggle('active', btn.dataset.view === view));
+    applyFilters();
+  }
+
+  btns.forEach(btn => btn.addEventListener('click', () => show(btn.dataset.view)));
+  searchInput.addEventListener('input', applyFilters);
+  clearFilters.addEventListener('click', () => { searchInput.value = ''; applyFilters(); });
+  const requestedView = new URLSearchParams(window.location.search).get('view');
+  const initialView = btns.some(btn => btn.dataset.view === requestedView) ? requestedView : 'ALL';
+  show(initialView);
+})();
+</script>
+</body></html>

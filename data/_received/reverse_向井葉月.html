@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>向井葉月 の呼ばれ方</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #1a0a2e;
+  color: #f0e8ff;
+  font-family: "Yu Gothic UI", "游ゴシック", "新レトロ丸ゴシック M", sans-serif;
+  min-height: 100vh;
+}
+
+/* ---- ヘッダー ---- */
+header {
+  background: linear-gradient(135deg, #6b21a8, #9333ea, #c026d3);
+  padding: 24px 20px 20px;
+  box-shadow: 0 4px 20px rgba(147,51,234,0.5);
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.back-btn:hover { background: rgba(255,255,255,0.28); }
+h1 {
+  font-size: 1.4rem;
+  font-weight: 900;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* ---- 前後ナビ ---- */
+.member-nav {
+  max-width: 1100px;
+  margin: 14px auto 0;
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.nav-btn {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #2d1b4e;
+  border: 1px solid #5b21b6;
+  color: #c084fc;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+.nav-btn:hover { background: #4c1d95; border-color: #c084fc; color: #fff; }
+.nav-placeholder { display: inline-block; width: 1px; }
+.mode-switch {
+  display: inline-flex;
+  overflow: hidden;
+  border: 1px solid #7c3aed;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.18);
+}
+.mode-tab {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 6px 14px;
+  color: #d8b4fe;
+  font-size: 0.85rem;
+  font-weight: 900;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.mode-tab.active {
+  background: #f5f3ff;
+  color: #5b21b6;
+}
+
+/* ---- 年度ボタンバー ---- */
+.year-bar {
+  max-width: 1100px;
+  margin: 16px auto 0;
+  padding: 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.year-bar-label {
+  font-size: 0.85rem;
+  color: #d8b4fe;
+  font-weight: bold;
+  margin-right: 4px;
+}
+.yr-btn {
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 2px solid #4c1d95;
+  background: #2d1b4e;
+  color: #c084fc;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.yr-btn:hover { background: #4c1d95; border-color: #a855f7; color: #fff; }
+.yr-btn.active { background: #7c3aed; border-color: #c084fc; color: #fff; }
+.yr-btn span {
+  margin-left: 4px;
+  font-size: 0.72rem;
+  opacity: 0.8;
+}
+
+/* ---- サマリ・検索 ---- */
+.summary-panel {
+  max-width: 1100px;
+  margin: 16px auto 0;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+}
+.summary-card {
+  background: rgba(0,0,0,0.22);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.summary-label {
+  display: block;
+  font-size: 0.74rem;
+  color: #c4b5fd;
+}
+.summary-value {
+  display: block;
+  margin-top: 3px;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #fff;
+}
+.summary-value.mini {
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+.filter-panel {
+  max-width: 1100px;
+  margin: 12px auto 0;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 8px;
+  align-items: center;
+}
+.filter-panel input,
+.filter-panel select,
+.filter-panel button {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid #5b21b6;
+  background: #2d1b4e;
+  color: #f0e8ff;
+  font-size: 0.9rem;
+  outline: none;
+}
+.filter-panel button {
+  cursor: pointer;
+  background: #4c1d95;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.filter-panel button:hover {
+  background: #6d28d9;
+}
+.filter-panel label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #d8b4fe;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+.filter-panel input[type="checkbox"] {
+  width: auto;
+  accent-color: #7c3aed;
+}
+#no-match {
+  display: none;
+  max-width: 1100px;
+  margin: 16px auto 0;
+  padding: 0 16px;
+  color: #c4b5fd;
+  font-size: 0.9rem;
+}
+tr.hidden { display: none; }
+
+/* ---- メイン ---- */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 16px 64px;
+}
+
+/* ---- テーブル ---- */
+.table-wrap { overflow-x: auto; }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #cfd6df;
+  border-radius: 6px;
+  overflow: hidden;
+}
+thead th {
+  padding: 12px 14px;
+  text-align: left;
+  background: #eef3f8;
+  color: #243447;
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid #cfd6df;
+  white-space: nowrap;
+}
+/* 呼び名列・回数列は固定幅、呼んでいる人列は残り全部 */
+thead th:nth-child(1) { width: 160px; }
+thead th:nth-child(3) { width: 80px; text-align: center; }
+tbody tr:nth-child(odd)  { background: #ffffff; }
+tbody tr:nth-child(even) { background: #f8fafc; }
+tbody tr:hover { background: #eef6f1; }
+tbody td {
+  padding: 10px 14px;
+  vertical-align: top;
+  border-bottom: 1px solid #d7dce3;
+  font-size: 0.9rem;
+  line-height: 1.9;
+}
+.nick-cell {
+  font-weight: 900;
+  color: #243447;
+  white-space: nowrap;
+  min-width: 100px;
+}
+/* 誰が呼んでいるか列：折り返しを確保 */
+.who-cell {
+  word-break: break-word;
+}
+/* 合計回数：大きく中央揃え */
+.count-cell { text-align: center; white-space: nowrap; }
+.count-num {
+  display: inline-block;
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #1f2937;
+  min-width: 36px;
+  text-align: center;
+}
+
+/* ---- バッジ ---- */
+.badge-max {
+  display: inline-block;
+  background: #ffd166;
+  color: #4a2c00;
+  border: 1px solid #c48700;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 0.85rem;
+  margin: 2px 3px 2px 0;
+  vertical-align: middle;
+}
+.badge-other {
+  display: inline-block;
+  background: #e8f7ee;
+  color: #14532d;
+  border: 1px solid #a7d7b8;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  margin: 2px 3px 2px 0;
+  vertical-align: middle;
+}
+.badge-paren {
+  display: inline-block;
+  background: #eef2f7;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 1px 8px;
+  font-size: 0.82rem;
+  margin: 2px 3px 2px 0;
+  vertical-align: middle;
+}
+.caller-token.hidden {
+  display: none;
+}
+/* 回数数字（バッジ内） */
+.cnt-num {
+  font-size: 0.72rem;
+  font-weight: bold;
+  opacity: 0.8;
+  margin-left: 3px;
+  vertical-align: middle;
+}
+
+/* ---- 凡例 ---- */
+.legend {
+  margin-top: 16px;
+  padding: 10px 14px;
+  background: rgba(0,0,0,0.2);
+  border-left: 3px solid #7c3aed;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+.legend-item { display: flex; align-items: center; gap: 6px; }
+
+:root{--purple:#6f3fa7;--purple-dark:#4d257b;--purple-soft:#f4effa;--line:#d8cbe7;--text:#241d2e;--muted:#6e6378}body{background:#fff!important;color:var(--text)!important;font-family:'Yu Gothic UI','Meiryo',sans-serif!important}header{background:#fff!important;border-bottom:3px solid var(--purple)!important;box-shadow:none!important;padding:22px 0 14px!important}.header-inner,.member-nav,.summary-panel,.year-bar,.filter-panel,.view,.caller-summary,.caller-groups,.target-gen-group{width:min(1120px,calc(100% - 32px))!important;max-width:1120px!important;margin-left:auto!important;margin-right:auto!important}.header-inner{display:flex!important;align-items:center!important;gap:12px!important}h1{color:var(--text)!important;font-size:clamp(1.35rem,4vw,2rem)!important;letter-spacing:0!important}.back-btn,.nav-btn,.mode-tab,.yr-btn{border-radius:6px!important;box-shadow:none!important;text-decoration:none!important;min-height:36px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;text-align:center!important}.nav-btn{min-width:150px!important}.mode-switch{display:flex!important;gap:6px!important;align-items:stretch!important}.mode-tab{min-width:96px!important;padding:7px 12px!important}.back-btn,.nav-btn,.mode-tab{background:#fff!important;border:1px solid var(--purple)!important;color:var(--purple-dark)!important}.mode-tab.active,.yr-btn.active{background:var(--purple)!important;color:#fff!important;border-color:var(--purple)!important}.member-nav{background:#fff!important;border:1px solid var(--line)!important;border-radius:6px!important;box-shadow:none!important;margin-top:14px!important;padding:10px!important;display:grid!important;grid-template-columns:minmax(150px,1fr) auto minmax(150px,1fr)!important;gap:10px!important;align-items:center!important}.member-nav .nav-btn:first-child{justify-self:start!important}.member-nav .nav-btn:last-child{justify-self:end!important}.summary-panel,.caller-summary{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))!important;gap:10px!important;background:#fff!important;border:0!important;box-shadow:none!important;margin-top:16px!important}.summary-card{background:#fff!important;border:1px solid var(--line)!important;border-radius:4px!important;box-shadow:none!important;color:var(--text)!important}.summary-label,.target-meta,.hint{color:var(--muted)!important}.summary-value{color:var(--text)!important}.year-bar,.filter-panel{background:var(--purple-soft)!important;border:1px solid var(--line)!important;border-radius:4px!important;box-shadow:none!important;margin-top:14px!important}.yr-btn{background:#fff!important;border:1px solid var(--line)!important;color:var(--purple-dark)!important}.filter-panel input,.filter-panel select{border:1px solid var(--line)!important;border-radius:4px!important;background:#fff!important;color:var(--text)!important}.filter-panel button,#clear-filters{border:1px solid #7b5aa6!important;background:#fff!important;color:#4d257b!important;border-radius:6px!important;font-weight:800!important}.view{margin-top:14px!important}.table-wrap,table,.caller-group,.target-group{border-radius:6px!important;box-shadow:none!important}table{background:#ffffff!important;color:#1f2937!important;border-collapse:collapse!important;border:1px solid #cfd6df!important}th{background:#eef3f8!important;color:#243447!important}td,th{border-color:#d7dce3!important}.caller-group,.target-group{background:#fff!important;border:1px solid #cfd6df!important}.caller-group h2,.target-group h2{background:#f7f4fb!important;color:#1f2937!important;border-bottom:1px solid #d7dce3!important}.caller-group h2 *, .target-group h2 *{color:#1f2937!important}.nickname-table tr:nth-child(even),.caller-table tr:nth-child(even){background:#fafafa!important}.badge-paren,.caller-token.badge-paren{background:#eef2f7!important;color:#334155!important;border:1px solid #cbd5e1!important;border-radius:999px!important;padding:2px 7px!important}.badge-max,.caller-token.badge-max{background:#ffd166!important;color:#4a2c00!important;border:1px solid #c48700!important;border-radius:999px!important;font-weight:900!important;padding:2px 7px!important}.badge-other,.caller-token.badge-other{background:#e8f7ee!important;color:#14532d!important;border:1px solid #a7d7b8!important;border-radius:999px!important;padding:2px 7px!important}.count-num{color:#1f2937!important}.target-name{color:#1f2937!important}.target-meta{color:#64748b!important}.gen-badge{background:#fff!important;color:#4d257b!important;border:1px solid #8b5bc3!important}tbody tr{background:#ffffff!important}tbody tr:nth-child(even){background:#f8fafc!important}.top-nickname-row,.top-nickname-row td{background:#fff0ad!important}.top-nickname-row .count-num{color:#b45309!important;font-weight:900!important}.share-strong-row,.share-strong-row td{background:#e6f6ea!important}.share-mid-row,.share-mid-row td{background:#f1faf3!important}.top-nickname-row.share-strong-row,.top-nickname-row.share-strong-row td{background:#ffe9a6!important}.share-num{color:#475569!important}@media(max-width:560px){.header-inner,.member-nav,.summary-panel,.year-bar,.filter-panel,.view,.caller-summary,.caller-groups,.target-gen-group{width:min(100% - 20px,1120px)!important}.member-nav{display:grid!important;grid-template-columns:1fr!important}.nav-btn{min-width:0!important}.mode-switch{justify-content:center!important}.filter-panel{display:grid!important;grid-template-columns:1fr!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="back-btn" href="../../received.html">← 一覧へ戻る</a>
+    <h1>向井葉月 の呼ばれ方</h1>
+  </div>
+</header>
+
+<div class="member-nav">
+  <a class='nav-btn' href='reverse_中村麗乃.html'>← 中村麗乃</a>
+  <div class="mode-switch" aria-label="表示切替">
+    <span class="mode-tab active">呼ばれ方</span>
+    <a class="mode-tab" href="../_calling/caller_向井葉月.html">呼び方</a>
+  </div>
+  <a class='nav-btn' href='reverse_山下美月.html'>山下美月 →</a>
+</div>
+
+<div class="summary-panel">
+  <div class="summary-card"><span class="summary-label">呼び名数</span><span class="summary-value" id="summary-nicks">12</span></div>
+  <div class="summary-card"><span class="summary-label">合計回数</span><span class="summary-value" id="summary-count">216</span></div>
+  <div class="summary-card"><span class="summary-label">呼んでいる人</span><span class="summary-value" id="summary-callers">43</span></div>
+  <div class="summary-card"><span class="summary-label">最多呼び名</span><span class="summary-value mini">葉月さん 97回</span></div>
+  <div class="summary-card"><span class="summary-label">1回のみ含む</span><span class="summary-value">11</span></div>
+  <div class="summary-card"><span class="summary-label">最新年</span><span class="summary-value">2026</span></div>
+</div>
+
+<div class="year-bar">
+  <span class="year-bar-label">年：</span>
+      <button class='yr-btn active' data-view='ALL'>全期間 <span>216回</span></button>
+    <button class='yr-btn' data-view='2016'>2016 <span>3回</span></button>
+    <button class='yr-btn' data-view='2017'>2017 <span>22回</span></button>
+    <button class='yr-btn' data-view='2018'>2018 <span>22回</span></button>
+    <button class='yr-btn' data-view='2019'>2019 <span>18回</span></button>
+    <button class='yr-btn' data-view='2020'>2020 <span>13回</span></button>
+    <button class='yr-btn' data-view='2021'>2021 <span>3回</span></button>
+    <button class='yr-btn' data-view='2022'>2022 <span>10回</span></button>
+    <button class='yr-btn' data-view='2023'>2023 <span>31回</span></button>
+    <button class='yr-btn' data-view='2024'>2024 <span>78回</span></button>
+    <button class='yr-btn' data-view='2025'>2025 <span>13回</span></button>
+    <button class='yr-btn' data-view='2026'>2026 <span>3回</span></button>
+
+</div>
+
+<div class="filter-panel">
+  <input type="text" id="page-search" placeholder="呼び名・呼んでいる人で検索…" autocomplete="off">
+  <select id="caller-filter">
+    <option value="">全員</option>
+      <option value='秋元真夏'>秋元真夏</option>
+      <option value='齋藤飛鳥'>齋藤飛鳥</option>
+      <option value='白石麻衣'>白石麻衣</option>
+      <option value='能條愛未'>能條愛未</option>
+      <option value='星野みなみ'>星野みなみ</option>
+      <option value='伊藤理々杏'>伊藤理々杏</option>
+      <option value='岩本蓮加'>岩本蓮加</option>
+      <option value='梅澤美波'>梅澤美波</option>
+      <option value='大園桃子'>大園桃子</option>
+      <option value='久保史緒里'>久保史緒里</option>
+      <option value='阪口珠美'>阪口珠美</option>
+      <option value='佐藤楓'>佐藤楓</option>
+      <option value='中村麗乃'>中村麗乃</option>
+      <option value='山下美月'>山下美月</option>
+      <option value='吉田綾乃クリスティー'>吉田綾乃クリスティー</option>
+      <option value='与田祐希'>与田祐希</option>
+      <option value='遠藤さくら'>遠藤さくら</option>
+      <option value='賀喜遥香'>賀喜遥香</option>
+      <option value='金川紗耶'>金川紗耶</option>
+      <option value='黒見明香'>黒見明香</option>
+      <option value='佐藤璃果'>佐藤璃果</option>
+      <option value='柴田柚菜'>柴田柚菜</option>
+      <option value='清宮レイ'>清宮レイ</option>
+      <option value='田村真佑'>田村真佑</option>
+      <option value='筒井あやめ'>筒井あやめ</option>
+      <option value='早川聖来'>早川聖来</option>
+      <option value='林瑠奈'>林瑠奈</option>
+      <option value='松尾美佑'>松尾美佑</option>
+      <option value='矢久保美緒'>矢久保美緒</option>
+      <option value='弓木奈於'>弓木奈於</option>
+      <option value='五百城茉央'>五百城茉央</option>
+      <option value='池田瑛紗'>池田瑛紗</option>
+      <option value='一ノ瀬美空'>一ノ瀬美空</option>
+      <option value='井上和'>井上和</option>
+      <option value='岡本姫奈'>岡本姫奈</option>
+      <option value='小川彩'>小川彩</option>
+      <option value='奥田いろは'>奥田いろは</option>
+      <option value='川﨑桜'>川﨑桜</option>
+      <option value='菅原咲月'>菅原咲月</option>
+      <option value='冨里奈央'>冨里奈央</option>
+      <option value='中西アルノ'>中西アルノ</option>
+      <option value='大越ひなの'>大越ひなの</option>
+      <option value='森平麗心'>森平麗心</option>
+  </select>
+  <select id="count-filter">
+    
+    <option value="1" selected>呼んでいる人: 1回以上</option>
+    <option value="2">呼んでいる人: 2回以上</option>
+    <option value="3">呼んでいる人: 3回以上</option>
+    <option value="4">呼んでいる人: 4回以上</option>
+    <option value="5">呼んでいる人: 5回以上</option>
+    <option value="6">呼んでいる人: 6回以上</option>
+    <option value="7">呼んでいる人: 7回以上</option>
+    <option value="8">呼んでいる人: 8回以上</option>
+    <option value="9">呼んでいる人: 9回以上</option>
+    <option value="10">呼んでいる人: 10回以上</option>
+    <option value="15">呼んでいる人: 15回以上</option>
+    <option value="20">呼んでいる人: 20回以上</option>
+    <option value="30">呼んでいる人: 30回以上</option>
+    <option value="50">呼んでいる人: 50回以上</option>
+    <option value="100">呼んでいる人: 100回以上</option>
+  </select>
+  <select id="total-filter">
+    
+    <option value="1" selected>合計: 1回以上</option>
+    <option value="2">合計: 2回以上</option>
+    <option value="3">合計: 3回以上</option>
+    <option value="4">合計: 4回以上</option>
+    <option value="5">合計: 5回以上</option>
+    <option value="6">合計: 6回以上</option>
+    <option value="7">合計: 7回以上</option>
+    <option value="8">合計: 8回以上</option>
+    <option value="9">合計: 9回以上</option>
+    <option value="10">合計: 10回以上</option>
+    <option value="15">合計: 15回以上</option>
+    <option value="20">合計: 20回以上</option>
+    <option value="30">合計: 30回以上</option>
+    <option value="50">合計: 50回以上</option>
+    <option value="100">合計: 100回以上</option>
+    <option value="200">合計: 200回以上</option>
+  </select>
+  
+  <button type="button" id="clear-filters">条件クリア</button>
+</div>
+
+<div id="no-match">該当する呼び名が見つかりませんでした</div>
+
+<main>
+  <div class="table-wrap">
+    <div class="view" data-view="ALL"><table><thead><tr><th>呼び名</th><th>誰が呼んでいるか</th><th>合計回数</th></tr></thead><tbody><tr data-nick='葉月さん' data-callers='黒見明香 池田瑛紗 小川彩 菅原咲月 柴田柚菜 岡本姫奈 奥田いろは 中西アルノ 佐藤璃果 林瑠奈 矢久保美緒 一ノ瀬美空 遠藤さくら 賀喜遥香 金川紗耶 川﨑桜 清宮レイ 田村真佑 筒井あやめ 松尾美佑 五百城茉央 井上和 冨里奈央 大越ひなの 森平麗心' data-caller-counts='{&quot;黒見明香&quot;: 13, &quot;池田瑛紗&quot;: 8, &quot;小川彩&quot;: 6, &quot;菅原咲月&quot;: 6, &quot;柴田柚菜&quot;: 5, &quot;岡本姫奈&quot;: 5, &quot;奥田いろは&quot;: 5, &quot;中西アルノ&quot;: 5, &quot;佐藤璃果&quot;: 4, &quot;林瑠奈&quot;: 4, &quot;矢久保美緒&quot;: 4, &quot;一ノ瀬美空&quot;: 4, &quot;遠藤さくら&quot;: 3, &quot;賀喜遥香&quot;: 3, &quot;金川紗耶&quot;: 3, &quot;川﨑桜&quot;: 3, &quot;清宮レイ&quot;: 2, &quot;田村真佑&quot;: 2, &quot;筒井あやめ&quot;: 2, &quot;松尾美佑&quot;: 2, &quot;五百城茉央&quot;: 2, &quot;井上和&quot;: 2, &quot;冨里奈央&quot;: 2, &quot;大越ひなの&quot;: 1, &quot;森平麗心&quot;: 1}' data-has-single='1' data-total='97'><td class='nick-cell'>葉月さん</td><td class='who-cell'><span class='caller-token badge-max' data-caller='黒見明香' data-caller-count='13'>黒見明香<span class='cnt-num'>13回</span></span> <span class='caller-token badge-max' data-caller='池田瑛紗' data-caller-count='8'>池田瑛紗<span class='cnt-num'>8回</span></span> <span class='caller-token badge-max' data-caller='小川彩' data-caller-count='6'>小川彩<span class='cnt-num'>6回</span></span> <span class='caller-token badge-max' data-caller='菅原咲月' data-caller-count='6'>菅原咲月<span class='cnt-num'>6回</span></span> <span class='caller-token badge-max' data-caller='柴田柚菜' data-caller-count='5'>柴田柚菜<span class='cnt-num'>5回</span></span> <span class='caller-token badge-max' data-caller='岡本姫奈' data-caller-count='5'>岡本姫奈<span class='cnt-num'>5回</span></span> <span class='caller-token badge-max' data-caller='奥田いろは' data-caller-count='5'>奥田いろは<span class='cnt-num'>5回</span></span> <span class='caller-token badge-max' data-caller='中西アルノ' data-caller-count='5'>中西アルノ<span class='cnt-num'>5回</span></span> <span class='caller-token badge-other' data-caller='佐藤璃果' data-caller-count='4'>佐藤璃果<span class='cnt-num'>4回</span></span> <span class='caller-token badge-max' data-caller='林瑠奈' data-caller-count='4'>林瑠奈<span class='cnt-num'>4回</span></span> <span class='caller-token badge-max' data-caller='矢久保美緒' data-caller-count='4'>矢久保美緒<span class='cnt-num'>4回</span></span> <span class='caller-token badge-max' data-caller='一ノ瀬美空' data-caller-count='4'>一ノ瀬美空<span class='cnt-num'>4回</span></span> <span class='caller-token badge-max' data-caller='遠藤さくら' data-caller-count='3'>遠藤さくら<span class='cnt-num'>3回</span></span> <span class='caller-token badge-max' data-caller='賀喜遥香' data-caller-count='3'>賀喜遥香<span class='cnt-num'>3回</span></span> <span class='caller-token badge-max' data-caller='金川紗耶' data-caller-count='3'>金川紗耶<span class='cnt-num'>3回</span></span> <span class='caller-token badge-max' data-caller='川﨑桜' data-caller-count='3'>川﨑桜<span class='cnt-num'>3回</span></span> <span class='caller-token badge-max' data-caller='清宮レイ' data-caller-count='2'>清宮レイ<span class='cnt-num'>2回</span></span> <span class='caller-token badge-other' data-caller='田村真佑' data-caller-count='2'>田村真佑<span class='cnt-num'>2回</span></span> <span class='caller-token badge-max' data-caller='筒井あやめ' data-caller-count='2'>筒井あやめ<span class='cnt-num'>2回</span></span> <span class='caller-token badge-max' data-caller='松尾美佑' data-caller-count='2'>松尾美佑<span class='cnt-num'>2回</span></span> <span class='caller-token badge-max' data-caller='五百城茉央' data-caller-count='2'>五百城茉央<span class='cnt-num'>2回</span></span> <span class='caller-token badge-max' data-caller='井上和' data-caller-count='2'>井上和<span class='cnt-num'>2回</span></span> <span class='caller-token badge-max' data-caller='冨里奈央' data-caller-count='2'>冨里奈央<span class='cnt-num'>2回</span></span> <span class='caller-token badge-paren' data-caller='大越ひなの' data-caller-count='1'>（大越ひなの）</span> <span class='caller-token badge-paren' data-caller='森平麗心' data-caller-count='1'>（森平麗心）</span></td><td class='count-cell'><span class='count-num'>97</span></td></tr><tr data-nick='葉月' data-callers='岩本蓮加 山下美月 佐藤楓 梅澤美波 久保史緒里 中村麗乃 与田祐希 吉田綾乃クリスティー 田村真佑 弓木奈於 伊藤理々杏 齋藤飛鳥 白石麻衣 阪口珠美 中西アルノ' data-caller-counts='{&quot;岩本蓮加&quot;: 28, &quot;山下美月&quot;: 7, &quot;佐藤楓&quot;: 5, &quot;梅澤美波&quot;: 4, &quot;久保史緒里&quot;: 4, &quot;中村麗乃&quot;: 4, &quot;与田祐希&quot;: 4, &quot;吉田綾乃クリスティー&quot;: 3, &quot;田村真佑&quot;: 3, &quot;弓木奈於&quot;: 3, &quot;伊藤理々杏&quot;: 2, &quot;齋藤飛鳥&quot;: 1, &quot;白石麻衣&quot;: 1, &quot;阪口珠美&quot;: 1, &quot;中西アルノ&quot;: 1}' data-has-single='1' data-total='71'><td class='nick-cell'>葉月</td><td class='who-cell'><span class='caller-token badge-max' data-caller='岩本蓮加' data-caller-count='28'>岩本蓮加<span class='cnt-num'>28回</span></span> <span class='caller-token badge-max' data-caller='山下美月' data-caller-count='7'>山下美月<span class='cnt-num'>7回</span></span> <span class='caller-token badge-max' data-caller='佐藤楓' data-caller-count='5'>佐藤楓<span class='cnt-num'>5回</span></span> <span class='caller-token badge-max' data-caller='梅澤美波' data-caller-count='4'>梅澤美波<span class='cnt-num'>4回</span></span> <span class='caller-token badge-max' data-caller='久保史緒里' data-caller-count='4'>久保史緒里<span class='cnt-num'>4回</span></span> <span class='caller-token badge-max' data-caller='中村麗乃' data-caller-count='4'>中村麗乃<span class='cnt-num'>4回</span></span> <span class='caller-token badge-max' data-caller='与田祐希' data-caller-count='4'>与田祐希<span class='cnt-num'>4回</span></span> <span class='caller-token badge-max' data-caller='吉田綾乃クリスティー' data-caller-count='3'>吉田綾乃クリスティー<span class='cnt-num'>3回</span></span> <span class='caller-token badge-max' data-caller='田村真佑' data-caller-count='3'>田村真佑<span class='cnt-num'>3回</span></span> <span class='caller-token badge-max' data-caller='弓木奈於' data-caller-count='3'>弓木奈於<span class='cnt-num'>3回</span></span> <span class='caller-token badge-other' data-caller='伊藤理々杏' data-caller-count='2'>伊藤理々杏<span class='cnt-num'>2回</span></span> <span class='caller-token badge-paren' data-caller='齋藤飛鳥' data-caller-count='1'>（齋藤飛鳥）</span> <span class='caller-token badge-paren' data-caller='白石麻衣' data-caller-count='1'>（白石麻衣）</span> <span class='caller-token badge-paren' data-caller='阪口珠美' data-caller-count='1'>（阪口珠美）</span> <span class='caller-token badge-paren' data-caller='中西アルノ' data-caller-count='1'>（中西アルノ）</span></td><td class='count-cell'><span class='count-num'>71</span></td></tr><tr data-nick='はづちゃん' data-callers='伊藤理々杏 佐藤璃果 黒見明香' data-caller-counts='{&quot;伊藤理々杏&quot;: 7, &quot;佐藤璃果&quot;: 7, &quot;黒見明香&quot;: 1}' data-has-single='1' data-total='15'><td class='nick-cell'>はづちゃん</td><td class='who-cell'><span class='caller-token badge-max' data-caller='伊藤理々杏' data-caller-count='7'>伊藤理々杏<span class='cnt-num'>7回</span></span> <span class='caller-token badge-max' data-caller='佐藤璃果' data-caller-count='7'>佐藤璃果<span class='cnt-num'>7回</span></span> <span class='caller-token badge-paren' data-caller='黒見明香' data-caller-count='1'>（黒見明香）</span></td><td class='count-cell'><span class='count-num'>15</span></td></tr><tr data-nick='はづ' data-callers='大園桃子 伊藤理々杏 梅澤美波 久保史緒里 岩本蓮加 吉田綾乃クリスティー' data-caller-counts='{&quot;大園桃子&quot;: 3, &quot;伊藤理々杏&quot;: 2, &quot;梅澤美波&quot;: 2, &quot;久保史緒里&quot;: 2, &quot;岩本蓮加&quot;: 1, &quot;吉田綾乃クリスティー&quot;: 1}' data-has-single='1' data-total='11'><td class='nick-cell'>はづ</td><td class='who-cell'><span class='caller-token badge-max' data-caller='大園桃子' data-caller-count='3'>大園桃子<span class='cnt-num'>3回</span></span> <span class='caller-token badge-other' data-caller='伊藤理々杏' data-caller-count='2'>伊藤理々杏<span class='cnt-num'>2回</span></span> <span class='caller-token badge-other' data-caller='梅澤美波' data-caller-count='2'>梅澤美波<span class='cnt-num'>2回</span></span> <span class='caller-token badge-other' data-caller='久保史緒里' data-caller-count='2'>久保史緒里<span class='cnt-num'>2回</span></span> <span class='caller-token badge-paren' data-caller='岩本蓮加' data-caller-count='1'>（岩本蓮加）</span> <span class='caller-token badge-paren' data-caller='吉田綾乃クリスティー' data-caller-count='1'>（吉田綾乃クリスティー）</span></td><td class='count-cell'><span class='count-num'>11</span></td></tr><tr data-nick='葉月ちゃん' data-callers='早川聖来 矢久保美緒 秋元真夏 星野みなみ 岩本蓮加 岡本姫奈' data-caller-counts='{&quot;早川聖来&quot;: 3, &quot;矢久保美緒&quot;: 2, &quot;秋元真夏&quot;: 1, &quot;星野みなみ&quot;: 1, &quot;岩本蓮加&quot;: 1, &quot;岡本姫奈&quot;: 1}' data-has-single='1' data-total='9'><td class='nick-cell'>葉月ちゃん</td><td class='who-cell'><span class='caller-token badge-max' data-caller='早川聖来' data-caller-count='3'>早川聖来<span class='cnt-num'>3回</span></span> <span class='caller-token badge-other' data-caller='矢久保美緒' data-caller-count='2'>矢久保美緒<span class='cnt-num'>2回</span></span> <span class='caller-token badge-paren' data-caller='秋元真夏' data-caller-count='1'>（秋元真夏）</span> <span class='caller-token badge-paren' data-caller='星野みなみ' data-caller-count='1'>（星野みなみ）</span> <span class='caller-token badge-paren' data-caller='岩本蓮加' data-caller-count='1'>（岩本蓮加）</span> <span class='caller-token badge-paren' data-caller='岡本姫奈' data-caller-count='1'>（岡本姫奈）</span></td><td class='count-cell'><span class='count-num'>9</span></td></tr><tr data-nick='はづたん' data-callers='岩本蓮加' data-caller-counts='{&quot;岩本蓮加&quot;: 3}' data-has-single='0' data-total='3'><td class='nick-cell'>はづたん</td><td class='who-cell'><span class='caller-token badge-other' data-caller='岩本蓮加' data-caller-count='3'>岩本蓮加<span class='cnt-num'>3回</span></span></td><td class='count-cell'><span class='count-num'>3</span></td></tr><tr data-nick='はじゅ' data-callers='岩本蓮加 梅澤美波' data-caller-counts='{&quot;岩本蓮加&quot;: 1, &quot;梅澤美波&quot;: 1}' data-has-single='1' data-total='2'><td class='nick-cell'>はじゅ</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='岩本蓮加' data-caller-count='1'>（岩本蓮加）</span> <span class='caller-token badge-paren' data-caller='梅澤美波' data-caller-count='1'>（梅澤美波）</span></td><td class='count-cell'><span class='count-num'>2</span></td></tr><tr data-nick='はづきち' data-callers='伊藤理々杏 岩本蓮加' data-caller-counts='{&quot;伊藤理々杏&quot;: 1, &quot;岩本蓮加&quot;: 1}' data-has-single='1' data-total='2'><td class='nick-cell'>はづきち</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='伊藤理々杏' data-caller-count='1'>（伊藤理々杏）</span> <span class='caller-token badge-paren' data-caller='岩本蓮加' data-caller-count='1'>（岩本蓮加）</span></td><td class='count-cell'><span class='count-num'>2</span></td></tr><tr data-nick='向井' data-callers='山下美月 吉田綾乃クリスティー' data-caller-counts='{&quot;山下美月&quot;: 1, &quot;吉田綾乃クリスティー&quot;: 1}' data-has-single='1' data-total='2'><td class='nick-cell'>向井</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='山下美月' data-caller-count='1'>（山下美月）</span> <span class='caller-token badge-paren' data-caller='吉田綾乃クリスティー' data-caller-count='1'>（吉田綾乃クリスティー）</span></td><td class='count-cell'><span class='count-num'>2</span></td></tr><tr data-nick='向井さん' data-callers='金川紗耶 池田瑛紗' data-caller-counts='{&quot;金川紗耶&quot;: 1, &quot;池田瑛紗&quot;: 1}' data-has-single='1' data-total='2'><td class='nick-cell'>向井さん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='金川紗耶' data-caller-count='1'>（金川紗耶）</span> <span class='caller-token badge-paren' data-caller='池田瑛紗' data-caller-count='1'>（池田瑛紗）</span></td><td class='count-cell'><span class='count-num'>2</span></td></tr><tr data-nick='はっさん' data-callers='能條愛未' data-caller-counts='{&quot;能條愛未&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>はっさん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='能條愛未' data-caller-count='1'>（能條愛未）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr><tr data-nick='麗乃' data-callers='弓木奈於' data-caller-counts='{&quot;弓木奈於&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>麗乃</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='弓木奈於' data-caller-count='1'>（弓木奈於）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr></tbody></table></div>
+    <div class='view' data-view='2016' style='display:none;'><table><thead><tr><th>呼び名</th><th>誰が呼んでいるか</th><th>合計回数</th></tr></thead><tbody><tr data-nick='葉月' data-callers='伊藤理々杏 佐藤楓 中村麗乃' data-caller-counts='{&quot;伊藤理々杏&quot;: 1, &quot;佐藤楓&quot;: 1, &quot;中村麗乃&quot;: 1}' data-has-single='1' data-total='3'><td class='nick-cell'>葉月</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='伊藤理々杏' data-caller-count='1'>（伊藤理々杏）</span> <span class='caller-token badge-paren' data-caller='佐藤楓' data-caller-count='1'>（佐藤楓）</span> <span class='caller-token badge-paren' data-caller='中村麗乃' data-caller-count='1'>（中村麗乃）</span></td><td class='count-cell'><span class='count-num'>3</span></td></tr></tbody></table></div><div class='view' data-view='2017' style='display:none;'><table><thead><tr><th>呼び名</th><th>誰が呼んでいるか</th><th>合計回数</th></tr></thead><tbody><tr data-nick='葉月' data-callers='梅澤美波 吉田綾乃クリスティー 伊藤理々杏 岩本蓮加 久保史緒里 阪口珠美 佐藤楓 中村麗乃 山下美月 与田祐希' data-caller-counts='{&quot;梅澤美波&quot;: 2, &quot;吉田綾乃クリスティー&quot;: 2, &quot;伊藤理々杏&quot;: 1, &quot;岩本蓮加&quot;: 1, &quot;久保史緒里&quot;: 1, &quot;阪口珠美&quot;: 1, &quot;佐藤楓&quot;: 1, &quot;中村麗乃&quot;: 1, &quot;山下美月&quot;: 1, &quot;与田祐希&quot;: 1}' data-has-single='1' data-total='12'><td class='nick-cell'>葉月</td><td class='who-cell'><span class='caller-token badge-max' data-caller='梅澤美波' data-caller-count='2'>梅澤美波<span class='cnt-num'>2回</span></span> <span class='caller-token badge-max' data-caller='吉田綾乃クリスティー' data-caller-count='2'>吉田綾乃クリスティー<span class='cnt-num'>2回</span></span> <span class='caller-token badge-paren' data-caller='伊藤理々杏' data-caller-count='1'>（伊藤理々杏）</span> <span class='caller-token badge-paren' data-caller='岩本蓮加' data-caller-count='1'>（岩本蓮加）</span> <span class='caller-token badge-paren' data-caller='久保史緒里' data-caller-count='1'>（久保史緒里）</span> <span class='caller-token badge-paren' data-caller='阪口珠美' data-caller-count='1'>（阪口珠美）</span> <span class='caller-token badge-paren' data-caller='佐藤楓' data-caller-count='1'>（佐藤楓）</span> <span class='caller-token badge-paren' data-caller='中村麗乃' data-caller-count='1'>（中村麗乃）</span> <span class='caller-token badge-paren' data-caller='山下美月' data-caller-count='1'>（山下美月）</span> <span class='caller-token badge-paren' data-caller='与田祐希' data-caller-count='1'>（与田祐希）</span></td><td class='count-cell'><span class='count-num'>12</span></td></tr><tr data-nick='はづ' data-callers='梅澤美波 大園桃子 吉田綾乃クリスティー' data-caller-counts='{&quot;梅澤美波&quot;: 1, &quot;大園桃子&quot;: 1, &quot;吉田綾乃クリスティー&quot;: 1}' data-has-single='1' data-total='3'><td class='nick-cell'>はづ</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='梅澤美波' data-caller-count='1'>（梅澤美波）</span> <span class='caller-token badge-paren' data-caller='大園桃子' data-caller-count='1'>（大園桃子）</span> <span class='caller-token badge-paren' data-caller='吉田綾乃クリスティー' data-caller-count='1'>（吉田綾乃クリスティー）</span></td><td class='count-cell'><span class='count-num'>3</span></td></tr><tr data-nick='向井' data-callers='山下美月 吉田綾乃クリスティー' data-caller-counts='{&quot;山下美月&quot;: 1, &quot;吉田綾乃クリスティー&quot;: 1}' data-has-single='1' data-total='2'><td class='nick-cell'>向井</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='山下美月' data-caller-count='1'>（山下美月）</span> <span class='caller-token badge-paren' data-caller='吉田綾乃クリスティー' data-caller-count='1'>（吉田綾乃クリスティー）</span></td><td class='count-cell'><span class='count-num'>2</span></td></tr><tr data-nick='葉月ちゃん' data-callers='秋元真夏 星野みなみ' data-caller-counts='{&quot;秋元真夏&quot;: 1, &quot;星野みなみ&quot;: 1}' data-has-single='1' data-total='2'><td class='nick-cell'>葉月ちゃん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='秋元真夏' data-caller-count='1'>（秋元真夏）</span> <span class='caller-token badge-paren' data-caller='星野みなみ' data-caller-count='1'>（星野みなみ）</span></td><td class='count-cell'><span class='count-num'>2</span></td></tr><tr data-nick='はじゅ' data-callers='梅澤美波' data-caller-counts='{&quot;梅澤美波&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>はじゅ</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='梅澤美波' data-caller-count='1'>（梅澤美波）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr><tr data-nick='はっさん' data-callers='能條愛未' data-caller-counts='{&quot;能條愛未&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>はっさん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='能條愛未' data-caller-count='1'>（能條愛未）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr><tr data-nick='はづきち' data-callers='伊藤理々杏' data-caller-counts='{&quot;伊藤理々杏&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>はづきち</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='伊藤理々杏' data-caller-count='1'>（伊藤理々杏）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr></tbody></table></div><div class='view' data-view='2018' style='display:none;'><table><thead><tr><th>呼び名</th><th>誰が呼んでいるか</th><th>合計回数</th></tr></thead><tbody><tr data-nick='葉月' data-callers='岩本蓮加 山下美月 久保史緒里 佐藤楓 中村麗乃 与田祐希' data-caller-counts='{&quot;岩本蓮加&quot;: 12, &quot;山下美月&quot;: 3, &quot;久保史緒里&quot;: 1, &quot;佐藤楓&quot;: 1, &quot;中村麗乃&quot;: 1, &quot;与田祐希&quot;: 1}' data-has-single='1' data-total='19'><td class='nick-cell'>葉月</td><td class='who-cell'><span class='caller-token badge-max' data-caller='岩本蓮加' data-caller-count='12'>岩本蓮加<span class='cnt-num'>12回</span></span> <span class='caller-token badge-max' data-caller='山下美月' data-caller-count='3'>山下美月<span class='cnt-num'>3回</span></span> <span class='caller-token badge-paren' data-caller='久保史緒里' data-caller-count='1'>（久保史緒里）</span> <span class='caller-token badge-paren' data-caller='佐藤楓' data-caller-count='1'>（佐藤楓）</span> <span class='caller-token badge-paren' data-caller='中村麗乃' data-caller-count='1'>（中村麗乃）</span> <span class='caller-token badge-paren' data-caller='与田祐希' data-caller-count='1'>（与田祐希）</span></td><td class='count-cell'><span class='count-num'>19</span></td></tr><tr data-nick='はじゅ' data-callers='岩本蓮加' data-caller-counts='{&quot;岩本蓮加&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>はじゅ</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='岩本蓮加' data-caller-count='1'>（岩本蓮加）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr><tr data-nick='はづきち' data-callers='岩本蓮加' data-caller-counts='{&quot;岩本蓮加&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>はづきち</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='岩本蓮加' data-caller-count='1'>（岩本蓮加）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr><tr data-nick='はづちゃん' data-callers='伊藤理々杏' data-caller-counts='{&quot;伊藤理々杏&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>はづちゃん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='伊藤理々杏' data-caller-count='1'>（伊藤理々杏）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr></tbody></table></div><div class='view' data-view='2019' style='display:none;'><table><thead><tr><th>呼び名</th><th>誰が呼んでいるか</th><th>合計回数</th></tr></thead><tbody><tr data-nick='葉月' data-callers='岩本蓮加 山下美月 田村真佑' data-caller-counts='{&quot;岩本蓮加&quot;: 8, &quot;山下美月&quot;: 1, &quot;田村真佑&quot;: 1}' data-has-single='1' data-total='10'><td class='nick-cell'>葉月</td><td class='who-cell'><span class='caller-token badge-max' data-caller='岩本蓮加' data-caller-count='8'>岩本蓮加<span class='cnt-num'>8回</span></span> <span class='caller-token badge-paren' data-caller='山下美月' data-caller-count='1'>（山下美月）</span> <span class='caller-token badge-paren' data-caller='田村真佑' data-caller-count='1'>（田村真佑）</span></td><td class='count-cell'><span class='count-num'>10</span></td></tr><tr data-nick='はづ' data-callers='大園桃子' data-caller-counts='{&quot;大園桃子&quot;: 2}' data-has-single='0' data-total='2'><td class='nick-cell'>はづ</td><td class='who-cell'><span class='caller-token badge-max' data-caller='大園桃子' data-caller-count='2'>大園桃子<span class='cnt-num'>2回</span></span></td><td class='count-cell'><span class='count-num'>2</span></td></tr><tr data-nick='はづたん' data-callers='岩本蓮加' data-caller-counts='{&quot;岩本蓮加&quot;: 2}' data-has-single='0' data-total='2'><td class='nick-cell'>はづたん</td><td class='who-cell'><span class='caller-token badge-other' data-caller='岩本蓮加' data-caller-count='2'>岩本蓮加<span class='cnt-num'>2回</span></span></td><td class='count-cell'><span class='count-num'>2</span></td></tr><tr data-nick='葉月さん' data-callers='遠藤さくら 矢久保美緒' data-caller-counts='{&quot;遠藤さくら&quot;: 1, &quot;矢久保美緒&quot;: 1}' data-has-single='1' data-total='2'><td class='nick-cell'>葉月さん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='遠藤さくら' data-caller-count='1'>（遠藤さくら）</span> <span class='caller-token badge-paren' data-caller='矢久保美緒' data-caller-count='1'>（矢久保美緒）</span></td><td class='count-cell'><span class='count-num'>2</span></td></tr><tr data-nick='はづちゃん' data-callers='伊藤理々杏' data-caller-counts='{&quot;伊藤理々杏&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>はづちゃん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='伊藤理々杏' data-caller-count='1'>（伊藤理々杏）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr><tr data-nick='葉月ちゃん' data-callers='岩本蓮加' data-caller-counts='{&quot;岩本蓮加&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>葉月ちゃん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='岩本蓮加' data-caller-count='1'>（岩本蓮加）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr></tbody></table></div><div class='view' data-view='2020' style='display:none;'><table><thead><tr><th>呼び名</th><th>誰が呼んでいるか</th><th>合計回数</th></tr></thead><tbody><tr data-nick='葉月' data-callers='岩本蓮加 山下美月' data-caller-counts='{&quot;岩本蓮加&quot;: 5, &quot;山下美月&quot;: 1}' data-has-single='1' data-total='6'><td class='nick-cell'>葉月</td><td class='who-cell'><span class='caller-token badge-max' data-caller='岩本蓮加' data-caller-count='5'>岩本蓮加<span class='cnt-num'>5回</span></span> <span class='caller-token badge-paren' data-caller='山下美月' data-caller-count='1'>（山下美月）</span></td><td class='count-cell'><span class='count-num'>6</span></td></tr><tr data-nick='葉月さん' data-callers='遠藤さくら 賀喜遥香 清宮レイ' data-caller-counts='{&quot;遠藤さくら&quot;: 1, &quot;賀喜遥香&quot;: 1, &quot;清宮レイ&quot;: 1}' data-has-single='1' data-total='3'><td class='nick-cell'>葉月さん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='遠藤さくら' data-caller-count='1'>（遠藤さくら）</span> <span class='caller-token badge-paren' data-caller='賀喜遥香' data-caller-count='1'>（賀喜遥香）</span> <span class='caller-token badge-paren' data-caller='清宮レイ' data-caller-count='1'>（清宮レイ）</span></td><td class='count-cell'><span class='count-num'>3</span></td></tr><tr data-nick='はづちゃん' data-callers='伊藤理々杏' data-caller-counts='{&quot;伊藤理々杏&quot;: 2}' data-has-single='0' data-total='2'><td class='nick-cell'>はづちゃん</td><td class='who-cell'><span class='caller-token badge-max' data-caller='伊藤理々杏' data-caller-count='2'>伊藤理々杏<span class='cnt-num'>2回</span></span></td><td class='count-cell'><span class='count-num'>2</span></td></tr><tr data-nick='はづたん' data-callers='岩本蓮加' data-caller-counts='{&quot;岩本蓮加&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>はづたん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='岩本蓮加' data-caller-count='1'>（岩本蓮加）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr><tr data-nick='葉月ちゃん' data-callers='早川聖来' data-caller-counts='{&quot;早川聖来&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>葉月ちゃん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='早川聖来' data-caller-count='1'>（早川聖来）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr></tbody></table></div><div class='view' data-view='2021' style='display:none;'><table><thead><tr><th>呼び名</th><th>誰が呼んでいるか</th><th>合計回数</th></tr></thead><tbody><tr data-nick='はづ' data-callers='久保史緒里' data-caller-counts='{&quot;久保史緒里&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>はづ</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='久保史緒里' data-caller-count='1'>（久保史緒里）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr><tr data-nick='葉月' data-callers='田村真佑' data-caller-counts='{&quot;田村真佑&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>葉月</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='田村真佑' data-caller-count='1'>（田村真佑）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr><tr data-nick='葉月ちゃん' data-callers='早川聖来' data-caller-counts='{&quot;早川聖来&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>葉月ちゃん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='早川聖来' data-caller-count='1'>（早川聖来）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr></tbody></table></div><div class='view' data-view='2022' style='display:none;'><table><thead><tr><th>呼び名</th><th>誰が呼んでいるか</th><th>合計回数</th></tr></thead><tbody><tr data-nick='葉月' data-callers='久保史緒里 山下美月 田村真佑 弓木奈於' data-caller-counts='{&quot;久保史緒里&quot;: 1, &quot;山下美月&quot;: 1, &quot;田村真佑&quot;: 1, &quot;弓木奈於&quot;: 1}' data-has-single='1' data-total='4'><td class='nick-cell'>葉月</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='久保史緒里' data-caller-count='1'>（久保史緒里）</span> <span class='caller-token badge-paren' data-caller='山下美月' data-caller-count='1'>（山下美月）</span> <span class='caller-token badge-paren' data-caller='田村真佑' data-caller-count='1'>（田村真佑）</span> <span class='caller-token badge-paren' data-caller='弓木奈於' data-caller-count='1'>（弓木奈於）</span></td><td class='count-cell'><span class='count-num'>4</span></td></tr><tr data-nick='葉月ちゃん' data-callers='早川聖来 矢久保美緒' data-caller-counts='{&quot;早川聖来&quot;: 1, &quot;矢久保美緒&quot;: 1}' data-has-single='1' data-total='2'><td class='nick-cell'>葉月ちゃん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='早川聖来' data-caller-count='1'>（早川聖来）</span> <span class='caller-token badge-paren' data-caller='矢久保美緒' data-caller-count='1'>（矢久保美緒）</span></td><td class='count-cell'><span class='count-num'>2</span></td></tr><tr data-nick='はづ' data-callers='梅澤美波' data-caller-counts='{&quot;梅澤美波&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>はづ</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='梅澤美波' data-caller-count='1'>（梅澤美波）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr><tr data-nick='向井さん' data-callers='池田瑛紗' data-caller-counts='{&quot;池田瑛紗&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>向井さん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='池田瑛紗' data-caller-count='1'>（池田瑛紗）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr><tr data-nick='葉月さん' data-callers='池田瑛紗' data-caller-counts='{&quot;池田瑛紗&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>葉月さん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='池田瑛紗' data-caller-count='1'>（池田瑛紗）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr><tr data-nick='麗乃' data-callers='弓木奈於' data-caller-counts='{&quot;弓木奈於&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>麗乃</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='弓木奈於' data-caller-count='1'>（弓木奈於）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr></tbody></table></div><div class='view' data-view='2023' style='display:none;'><table><thead><tr><th>呼び名</th><th>誰が呼んでいるか</th><th>合計回数</th></tr></thead><tbody><tr data-nick='葉月さん' data-callers='黒見明香 池田瑛紗 奥田いろは 金川紗耶 柴田柚菜 清宮レイ 林瑠奈 矢久保美緒 五百城茉央 一ノ瀬美空 小川彩 川﨑桜 菅原咲月 中西アルノ' data-caller-counts='{&quot;黒見明香&quot;: 8, &quot;池田瑛紗&quot;: 3, &quot;奥田いろは&quot;: 2, &quot;金川紗耶&quot;: 1, &quot;柴田柚菜&quot;: 1, &quot;清宮レイ&quot;: 1, &quot;林瑠奈&quot;: 1, &quot;矢久保美緒&quot;: 1, &quot;五百城茉央&quot;: 1, &quot;一ノ瀬美空&quot;: 1, &quot;小川彩&quot;: 1, &quot;川﨑桜&quot;: 1, &quot;菅原咲月&quot;: 1, &quot;中西アルノ&quot;: 1}' data-has-single='1' data-total='24'><td class='nick-cell'>葉月さん</td><td class='who-cell'><span class='caller-token badge-max' data-caller='黒見明香' data-caller-count='8'>黒見明香<span class='cnt-num'>8回</span></span> <span class='caller-token badge-max' data-caller='池田瑛紗' data-caller-count='3'>池田瑛紗<span class='cnt-num'>3回</span></span> <span class='caller-token badge-max' data-caller='奥田いろは' data-caller-count='2'>奥田いろは<span class='cnt-num'>2回</span></span> <span class='caller-token badge-paren' data-caller='金川紗耶' data-caller-count='1'>（金川紗耶）</span> <span class='caller-token badge-paren' data-caller='柴田柚菜' data-caller-count='1'>（柴田柚菜）</span> <span class='caller-token badge-paren' data-caller='清宮レイ' data-caller-count='1'>（清宮レイ）</span> <span class='caller-token badge-paren' data-caller='林瑠奈' data-caller-count='1'>（林瑠奈）</span> <span class='caller-token badge-paren' data-caller='矢久保美緒' data-caller-count='1'>（矢久保美緒）</span> <span class='caller-token badge-paren' data-caller='五百城茉央' data-caller-count='1'>（五百城茉央）</span> <span class='caller-token badge-paren' data-caller='一ノ瀬美空' data-caller-count='1'>（一ノ瀬美空）</span> <span class='caller-token badge-paren' data-caller='小川彩' data-caller-count='1'>（小川彩）</span> <span class='caller-token badge-paren' data-caller='川﨑桜' data-caller-count='1'>（川﨑桜）</span> <span class='caller-token badge-paren' data-caller='菅原咲月' data-caller-count='1'>（菅原咲月）</span> <span class='caller-token badge-paren' data-caller='中西アルノ' data-caller-count='1'>（中西アルノ）</span></td><td class='count-cell'><span class='count-num'>24</span></td></tr><tr data-nick='はづちゃん' data-callers='佐藤璃果 伊藤理々杏' data-caller-counts='{&quot;佐藤璃果&quot;: 2, &quot;伊藤理々杏&quot;: 1}' data-has-single='1' data-total='3'><td class='nick-cell'>はづちゃん</td><td class='who-cell'><span class='caller-token badge-max' data-caller='佐藤璃果' data-caller-count='2'>佐藤璃果<span class='cnt-num'>2回</span></span> <span class='caller-token badge-paren' data-caller='伊藤理々杏' data-caller-count='1'>（伊藤理々杏）</span></td><td class='count-cell'><span class='count-num'>3</span></td></tr><tr data-nick='葉月' data-callers='岩本蓮加 佐藤楓 中村麗乃' data-caller-counts='{&quot;岩本蓮加&quot;: 1, &quot;佐藤楓&quot;: 1, &quot;中村麗乃&quot;: 1}' data-has-single='1' data-total='3'><td class='nick-cell'>葉月</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='岩本蓮加' data-caller-count='1'>（岩本蓮加）</span> <span class='caller-token badge-paren' data-caller='佐藤楓' data-caller-count='1'>（佐藤楓）</span> <span class='caller-token badge-paren' data-caller='中村麗乃' data-caller-count='1'>（中村麗乃）</span></td><td class='count-cell'><span class='count-num'>3</span></td></tr><tr data-nick='はづ' data-callers='伊藤理々杏' data-caller-counts='{&quot;伊藤理々杏&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>はづ</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='伊藤理々杏' data-caller-count='1'>（伊藤理々杏）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr></tbody></table></div><div class='view' data-view='2024' style='display:none;'><table><thead><tr><th>呼び名</th><th>誰が呼んでいるか</th><th>合計回数</th></tr></thead><tbody><tr data-nick='葉月さん' data-callers='黒見明香 佐藤璃果 柴田柚菜 池田瑛紗 小川彩 菅原咲月 中西アルノ 一ノ瀬美空 岡本姫奈 金川紗耶 田村真佑 林瑠奈 松尾美佑 井上和 奥田いろは 川﨑桜 冨里奈央 遠藤さくら 賀喜遥香 筒井あやめ 矢久保美緒 五百城茉央' data-caller-counts='{&quot;黒見明香&quot;: 5, &quot;佐藤璃果&quot;: 4, &quot;柴田柚菜&quot;: 4, &quot;池田瑛紗&quot;: 4, &quot;小川彩&quot;: 4, &quot;菅原咲月&quot;: 4, &quot;中西アルノ&quot;: 4, &quot;一ノ瀬美空&quot;: 3, &quot;岡本姫奈&quot;: 3, &quot;金川紗耶&quot;: 2, &quot;田村真佑&quot;: 2, &quot;林瑠奈&quot;: 2, &quot;松尾美佑&quot;: 2, &quot;井上和&quot;: 2, &quot;奥田いろは&quot;: 2, &quot;川﨑桜&quot;: 2, &quot;冨里奈央&quot;: 2, &quot;遠藤さくら&quot;: 1, &quot;賀喜遥香&quot;: 1, &quot;筒井あやめ&quot;: 1, &quot;矢久保美緒&quot;: 1, &quot;五百城茉央&quot;: 1}' data-has-single='1' data-total='56'><td class='nick-cell'>葉月さん</td><td class='who-cell'><span class='caller-token badge-max' data-caller='黒見明香' data-caller-count='5'>黒見明香<span class='cnt-num'>5回</span></span> <span class='caller-token badge-other' data-caller='佐藤璃果' data-caller-count='4'>佐藤璃果<span class='cnt-num'>4回</span></span> <span class='caller-token badge-max' data-caller='柴田柚菜' data-caller-count='4'>柴田柚菜<span class='cnt-num'>4回</span></span> <span class='caller-token badge-max' data-caller='池田瑛紗' data-caller-count='4'>池田瑛紗<span class='cnt-num'>4回</span></span> <span class='caller-token badge-max' data-caller='小川彩' data-caller-count='4'>小川彩<span class='cnt-num'>4回</span></span> <span class='caller-token badge-max' data-caller='菅原咲月' data-caller-count='4'>菅原咲月<span class='cnt-num'>4回</span></span> <span class='caller-token badge-max' data-caller='中西アルノ' data-caller-count='4'>中西アルノ<span class='cnt-num'>4回</span></span> <span class='caller-token badge-max' data-caller='一ノ瀬美空' data-caller-count='3'>一ノ瀬美空<span class='cnt-num'>3回</span></span> <span class='caller-token badge-max' data-caller='岡本姫奈' data-caller-count='3'>岡本姫奈<span class='cnt-num'>3回</span></span> <span class='caller-token badge-max' data-caller='金川紗耶' data-caller-count='2'>金川紗耶<span class='cnt-num'>2回</span></span> <span class='caller-token badge-max' data-caller='田村真佑' data-caller-count='2'>田村真佑<span class='cnt-num'>2回</span></span> <span class='caller-token badge-max' data-caller='林瑠奈' data-caller-count='2'>林瑠奈<span class='cnt-num'>2回</span></span> <span class='caller-token badge-max' data-caller='松尾美佑' data-caller-count='2'>松尾美佑<span class='cnt-num'>2回</span></span> <span class='caller-token badge-max' data-caller='井上和' data-caller-count='2'>井上和<span class='cnt-num'>2回</span></span> <span class='caller-token badge-max' data-caller='奥田いろは' data-caller-count='2'>奥田いろは<span class='cnt-num'>2回</span></span> <span class='caller-token badge-max' data-caller='川﨑桜' data-caller-count='2'>川﨑桜<span class='cnt-num'>2回</span></span> <span class='caller-token badge-max' data-caller='冨里奈央' data-caller-count='2'>冨里奈央<span class='cnt-num'>2回</span></span> <span class='caller-token badge-paren' data-caller='遠藤さくら' data-caller-count='1'>（遠藤さくら）</span> <span class='caller-token badge-paren' data-caller='賀喜遥香' data-caller-count='1'>（賀喜遥香）</span> <span class='caller-token badge-paren' data-caller='筒井あやめ' data-caller-count='1'>（筒井あやめ）</span> <span class='caller-token badge-paren' data-caller='矢久保美緒' data-caller-count='1'>（矢久保美緒）</span> <span class='caller-token badge-paren' data-caller='五百城茉央' data-caller-count='1'>（五百城茉央）</span></td><td class='count-cell'><span class='count-num'>56</span></td></tr><tr data-nick='葉月' data-callers='与田祐希 弓木奈於 齋藤飛鳥 岩本蓮加 梅澤美波 久保史緒里 佐藤楓 中西アルノ' data-caller-counts='{&quot;与田祐希&quot;: 2, &quot;弓木奈於&quot;: 2, &quot;齋藤飛鳥&quot;: 1, &quot;岩本蓮加&quot;: 1, &quot;梅澤美波&quot;: 1, &quot;久保史緒里&quot;: 1, &quot;佐藤楓&quot;: 1, &quot;中西アルノ&quot;: 1}' data-has-single='1' data-total='10'><td class='nick-cell'>葉月</td><td class='who-cell'><span class='caller-token badge-max' data-caller='与田祐希' data-caller-count='2'>与田祐希<span class='cnt-num'>2回</span></span> <span class='caller-token badge-max' data-caller='弓木奈於' data-caller-count='2'>弓木奈於<span class='cnt-num'>2回</span></span> <span class='caller-token badge-paren' data-caller='齋藤飛鳥' data-caller-count='1'>（齋藤飛鳥）</span> <span class='caller-token badge-paren' data-caller='岩本蓮加' data-caller-count='1'>（岩本蓮加）</span> <span class='caller-token badge-paren' data-caller='梅澤美波' data-caller-count='1'>（梅澤美波）</span> <span class='caller-token badge-paren' data-caller='久保史緒里' data-caller-count='1'>（久保史緒里）</span> <span class='caller-token badge-paren' data-caller='佐藤楓' data-caller-count='1'>（佐藤楓）</span> <span class='caller-token badge-paren' data-caller='中西アルノ' data-caller-count='1'>（中西アルノ）</span></td><td class='count-cell'><span class='count-num'>10</span></td></tr><tr data-nick='はづちゃん' data-callers='佐藤璃果 伊藤理々杏 黒見明香' data-caller-counts='{&quot;佐藤璃果&quot;: 5, &quot;伊藤理々杏&quot;: 2, &quot;黒見明香&quot;: 1}' data-has-single='1' data-total='8'><td class='nick-cell'>はづちゃん</td><td class='who-cell'><span class='caller-token badge-max' data-caller='佐藤璃果' data-caller-count='5'>佐藤璃果<span class='cnt-num'>5回</span></span> <span class='caller-token badge-max' data-caller='伊藤理々杏' data-caller-count='2'>伊藤理々杏<span class='cnt-num'>2回</span></span> <span class='caller-token badge-paren' data-caller='黒見明香' data-caller-count='1'>（黒見明香）</span></td><td class='count-cell'><span class='count-num'>8</span></td></tr><tr data-nick='はづ' data-callers='伊藤理々杏 久保史緒里' data-caller-counts='{&quot;伊藤理々杏&quot;: 1, &quot;久保史緒里&quot;: 1}' data-has-single='1' data-total='2'><td class='nick-cell'>はづ</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='伊藤理々杏' data-caller-count='1'>（伊藤理々杏）</span> <span class='caller-token badge-paren' data-caller='久保史緒里' data-caller-count='1'>（久保史緒里）</span></td><td class='count-cell'><span class='count-num'>2</span></td></tr><tr data-nick='向井さん' data-callers='金川紗耶' data-caller-counts='{&quot;金川紗耶&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>向井さん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='金川紗耶' data-caller-count='1'>（金川紗耶）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr><tr data-nick='葉月ちゃん' data-callers='矢久保美緒' data-caller-counts='{&quot;矢久保美緒&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>葉月ちゃん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='矢久保美緒' data-caller-count='1'>（矢久保美緒）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr></tbody></table></div><div class='view' data-view='2025' style='display:none;'><table><thead><tr><th>呼び名</th><th>誰が呼んでいるか</th><th>合計回数</th></tr></thead><tbody><tr data-nick='葉月さん' data-callers='賀喜遥香 筒井あやめ 林瑠奈 矢久保美緒 岡本姫奈 小川彩 奥田いろは 菅原咲月 大越ひなの 森平麗心' data-caller-counts='{&quot;賀喜遥香&quot;: 1, &quot;筒井あやめ&quot;: 1, &quot;林瑠奈&quot;: 1, &quot;矢久保美緒&quot;: 1, &quot;岡本姫奈&quot;: 1, &quot;小川彩&quot;: 1, &quot;奥田いろは&quot;: 1, &quot;菅原咲月&quot;: 1, &quot;大越ひなの&quot;: 1, &quot;森平麗心&quot;: 1}' data-has-single='1' data-total='10'><td class='nick-cell'>葉月さん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='賀喜遥香' data-caller-count='1'>（賀喜遥香）</span> <span class='caller-token badge-paren' data-caller='筒井あやめ' data-caller-count='1'>（筒井あやめ）</span> <span class='caller-token badge-paren' data-caller='林瑠奈' data-caller-count='1'>（林瑠奈）</span> <span class='caller-token badge-paren' data-caller='矢久保美緒' data-caller-count='1'>（矢久保美緒）</span> <span class='caller-token badge-paren' data-caller='岡本姫奈' data-caller-count='1'>（岡本姫奈）</span> <span class='caller-token badge-paren' data-caller='小川彩' data-caller-count='1'>（小川彩）</span> <span class='caller-token badge-paren' data-caller='奥田いろは' data-caller-count='1'>（奥田いろは）</span> <span class='caller-token badge-paren' data-caller='菅原咲月' data-caller-count='1'>（菅原咲月）</span> <span class='caller-token badge-paren' data-caller='大越ひなの' data-caller-count='1'>（大越ひなの）</span> <span class='caller-token badge-paren' data-caller='森平麗心' data-caller-count='1'>（森平麗心）</span></td><td class='count-cell'><span class='count-num'>10</span></td></tr><tr data-nick='はづ' data-callers='岩本蓮加' data-caller-counts='{&quot;岩本蓮加&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>はづ</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='岩本蓮加' data-caller-count='1'>（岩本蓮加）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr><tr data-nick='葉月' data-callers='吉田綾乃クリスティー' data-caller-counts='{&quot;吉田綾乃クリスティー&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>葉月</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='吉田綾乃クリスティー' data-caller-count='1'>（吉田綾乃クリスティー）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr><tr data-nick='葉月ちゃん' data-callers='岡本姫奈' data-caller-counts='{&quot;岡本姫奈&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>葉月ちゃん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='岡本姫奈' data-caller-count='1'>（岡本姫奈）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr></tbody></table></div><div class='view' data-view='2026' style='display:none;'><table><thead><tr><th>呼び名</th><th>誰が呼んでいるか</th><th>合計回数</th></tr></thead><tbody><tr data-nick='葉月' data-callers='白石麻衣 梅澤美波' data-caller-counts='{&quot;白石麻衣&quot;: 1, &quot;梅澤美波&quot;: 1}' data-has-single='1' data-total='2'><td class='nick-cell'>葉月</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='白石麻衣' data-caller-count='1'>（白石麻衣）</span> <span class='caller-token badge-paren' data-caller='梅澤美波' data-caller-count='1'>（梅澤美波）</span></td><td class='count-cell'><span class='count-num'>2</span></td></tr><tr data-nick='葉月さん' data-callers='岡本姫奈' data-caller-counts='{&quot;岡本姫奈&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>葉月さん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='岡本姫奈' data-caller-count='1'>（岡本姫奈）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr></tbody></table></div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="badge-max">名前 <span class="cnt-num">N回</span></span> その人からの最多呼び名</div>
+    <div class="legend-item"><span class="badge-other">名前 <span class="cnt-num">N回</span></span> 複数回（2回以上）</div>
+    <div class="legend-item"><span class="badge-paren">（名前）</span> 1回のみ</div>
+  </div>
+</main>
+
+<script>
+(function(){
+  const btns  = Array.from(document.querySelectorAll('.yr-btn'));
+  const views = Array.from(document.querySelectorAll('.view'));
+  const searchInput = document.getElementById('page-search');
+  const callerFilter = document.getElementById('caller-filter');
+  const countFilter = document.getElementById('count-filter');
+  const totalFilter = document.getElementById('total-filter');
+  
+  const clearFilters = document.getElementById('clear-filters');
+  const noMatch = document.getElementById('no-match');
+  const summaryNicks = document.getElementById('summary-nicks');
+  const summaryCount = document.getElementById('summary-count');
+  const summaryCallers = document.getElementById('summary-callers');
+  let activeView = 'ALL';
+
+  function norm(value) {
+    return (value || '').normalize('NFKC').toLowerCase().trim();
+  }
+
+  function visibleRows() {
+    const view = document.querySelector(`.view[data-view="${activeView}"]`);
+    return view ? Array.from(view.querySelectorAll('tbody tr')) : [];
+  }
+
+  function applyFilters() {
+    const q = norm(searchInput.value);
+    const selectedCaller = callerFilter.value;
+    const minCount = parseInt(countFilter.value || '0', 10) || 0;
+    let visible = 0;
+    let totalCount = 0;
+    const callerSet = new Set();
+
+    visibleRows().forEach(row => {
+      const nick = norm(row.dataset.nick || '');
+      const callers = row.dataset.callers || '';
+      const callerCounts = JSON.parse(row.dataset.callerCounts || '{}');
+      const rowTotal = parseInt(row.dataset.total || '0', 10) || 0;
+      const haystack = norm(`${row.dataset.nick || ''} ${callers}`);
+      const matchesQuery = !q || haystack.includes(q);
+      const matchesCaller = !selectedCaller || callers.split(/\s+/).includes(selectedCaller);
+      const totalMinCount = parseInt(totalFilter.value || '0', 10) || 0;
+      const matchesTotal = rowTotal >= totalMinCount;
+      const matchesSingle = true;
+      let visibleTokenCount = 0;
+      row.querySelectorAll('.caller-token').forEach(token => {
+        const tokenCaller = token.dataset.caller || '';
+        const tokenCount = parseInt(token.dataset.callerCount || '0', 10) || 0;
+        const tokenShow = (!selectedCaller || tokenCaller === selectedCaller) && tokenCount >= minCount;
+        token.classList.toggle('hidden', !tokenShow);
+        if (tokenShow) visibleTokenCount += 1;
+      });
+      const matchesCount = visibleTokenCount > 0;
+      const show = matchesQuery && matchesCaller && matchesCount && matchesTotal && matchesSingle;
+      row.classList.toggle('hidden', !show);
+      if (show) {
+        visible += 1;
+        const countCell = row.querySelector('.count-num');
+        totalCount += countCell ? parseInt(countCell.textContent || '0', 10) || 0 : 0;
+        row.querySelectorAll('.caller-token:not(.hidden)').forEach(token => callerSet.add(token.dataset.caller || ''));
+      }
+    });
+
+    summaryNicks.textContent = visible;
+    summaryCount.textContent = totalCount;
+    summaryCallers.textContent = callerSet.size;
+    noMatch.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  function show(v) {
+    activeView = v;
+    views.forEach(el => el.style.display = (el.getAttribute('data-view') === v) ? 'block' : 'none');
+    btns.forEach(b => b.classList.toggle('active', b.getAttribute('data-view') === v));
+    applyFilters();
+  }
+
+  function resetFilters() {
+    searchInput.value = '';
+    callerFilter.value = '';
+    countFilter.value = '1';
+    totalFilter.value = '1';
+    
+    applyFilters();
+  }
+
+  btns.forEach(b => b.addEventListener('click', () => show(b.getAttribute('data-view'))));
+  searchInput.addEventListener('input', applyFilters);
+  callerFilter.addEventListener('change', applyFilters);
+  countFilter.addEventListener('change', applyFilters);
+  totalFilter.addEventListener('change', applyFilters);
+  
+  clearFilters.addEventListener('click', resetFilters);
+  const requestedView = new URLSearchParams(window.location.search).get('view');
+  const initialView = btns.some(b => b.getAttribute('data-view') === requestedView) ? requestedView : 'ALL';
+  show(initialView);
+})();
+</script>
+</body></html>
