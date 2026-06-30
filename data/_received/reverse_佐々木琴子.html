@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<title>佐々木琴子 の呼ばれ方</title>
+<title>佐々木琴子の呼ばれ方（何と呼ばれている？）</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -241,7 +241,7 @@ thead th {
   border-bottom: 1px solid #cfd6df;
   white-space: nowrap;
 }
-/* 呼び名列・回数列は固定幅、呼んでいる人列は残り全部 */
+/* 呼び名列・回数列は固定幅、呼ぶメンバー列は残り全部 */
 thead th:nth-child(1) { width: 160px; }
 thead th:nth-child(3) { width: 80px; text-align: center; }
 tbody tr:nth-child(odd)  { background: #ffffff; }
@@ -260,7 +260,7 @@ tbody td {
   white-space: nowrap;
   min-width: 100px;
 }
-/* 誰が呼んでいるか列：折り返しを確保 */
+/* 呼ぶメンバー列：折り返しを確保 */
 .who-cell {
   word-break: break-word;
 }
@@ -346,7 +346,7 @@ tbody td {
 <header>
   <div class="header-inner">
     <a class="back-btn" href="../../received.html">← 一覧へ戻る</a>
-    <h1>佐々木琴子 の呼ばれ方</h1>
+    <h1>佐々木琴子の呼ばれ方（何と呼ばれている？）</h1>
   </div>
 </header>
 
@@ -362,8 +362,8 @@ tbody td {
 <div class="summary-panel">
   <div class="summary-card"><span class="summary-label">呼び名数</span><span class="summary-value" id="summary-nicks">2</span></div>
   <div class="summary-card"><span class="summary-label">合計回数</span><span class="summary-value" id="summary-count">12</span></div>
-  <div class="summary-card"><span class="summary-label">呼んでいる人</span><span class="summary-value" id="summary-callers">8</span></div>
-  <div class="summary-card"><span class="summary-label">最多呼び名</span><span class="summary-value mini">琴子さん 9回</span></div>
+  <div class="summary-card"><span class="summary-label">呼ぶメンバー</span><span class="summary-value" id="summary-callers">8</span></div>
+  <div class="summary-card"><span class="summary-label">最も多い呼び名</span><span class="summary-value mini">琴子さん 9回</span></div>
   <div class="summary-card"><span class="summary-label">1回のみ含む</span><span class="summary-value">2</span></div>
   <div class="summary-card"><span class="summary-label">最新年</span><span class="summary-value">2024</span></div>
 </div>
@@ -380,7 +380,7 @@ tbody td {
 </div>
 
 <div class="filter-panel">
-  <input type="text" id="page-search" placeholder="呼び名・呼んでいる人で検索…" autocomplete="off">
+  <input type="text" id="page-search" placeholder="呼び名・呼ぶメンバーで検索…" autocomplete="off">
   <select id="caller-filter">
     <option value="">全員</option>
       <option value='伊藤寧々'>伊藤寧々</option>
@@ -394,21 +394,21 @@ tbody td {
   </select>
   <select id="count-filter">
     
-    <option value="1" selected>呼んでいる人: 1回以上</option>
-    <option value="2">呼んでいる人: 2回以上</option>
-    <option value="3">呼んでいる人: 3回以上</option>
-    <option value="4">呼んでいる人: 4回以上</option>
-    <option value="5">呼んでいる人: 5回以上</option>
-    <option value="6">呼んでいる人: 6回以上</option>
-    <option value="7">呼んでいる人: 7回以上</option>
-    <option value="8">呼んでいる人: 8回以上</option>
-    <option value="9">呼んでいる人: 9回以上</option>
-    <option value="10">呼んでいる人: 10回以上</option>
-    <option value="15">呼んでいる人: 15回以上</option>
-    <option value="20">呼んでいる人: 20回以上</option>
-    <option value="30">呼んでいる人: 30回以上</option>
-    <option value="50">呼んでいる人: 50回以上</option>
-    <option value="100">呼んでいる人: 100回以上</option>
+    <option value="1" selected>呼ぶメンバー: 1回以上</option>
+    <option value="2">呼ぶメンバー: 2回以上</option>
+    <option value="3">呼ぶメンバー: 3回以上</option>
+    <option value="4">呼ぶメンバー: 4回以上</option>
+    <option value="5">呼ぶメンバー: 5回以上</option>
+    <option value="6">呼ぶメンバー: 6回以上</option>
+    <option value="7">呼ぶメンバー: 7回以上</option>
+    <option value="8">呼ぶメンバー: 8回以上</option>
+    <option value="9">呼ぶメンバー: 9回以上</option>
+    <option value="10">呼ぶメンバー: 10回以上</option>
+    <option value="15">呼ぶメンバー: 15回以上</option>
+    <option value="20">呼ぶメンバー: 20回以上</option>
+    <option value="30">呼ぶメンバー: 30回以上</option>
+    <option value="50">呼ぶメンバー: 50回以上</option>
+    <option value="100">呼ぶメンバー: 100回以上</option>
   </select>
   <select id="total-filter">
     
@@ -437,12 +437,12 @@ tbody td {
 
 <main>
   <div class="table-wrap">
-    <div class="view" data-view="ALL"><table><thead><tr><th>呼び名</th><th>誰が呼んでいるか</th><th>合計回数</th></tr></thead><tbody><tr data-nick='琴子さん' data-callers='岩本蓮加 賀喜遥香 伊藤理々杏 山下美月 柴田柚菜 奥田いろは' data-caller-counts='{&quot;岩本蓮加&quot;: 3, &quot;賀喜遥香&quot;: 2, &quot;伊藤理々杏&quot;: 1, &quot;山下美月&quot;: 1, &quot;柴田柚菜&quot;: 1, &quot;奥田いろは&quot;: 1}' data-has-single='1' data-total='9'><td class='nick-cell'>琴子さん</td><td class='who-cell'><span class='caller-token badge-max' data-caller='岩本蓮加' data-caller-count='3'>岩本蓮加<span class='cnt-num'>3回</span></span> <span class='caller-token badge-max' data-caller='賀喜遥香' data-caller-count='2'>賀喜遥香<span class='cnt-num'>2回</span></span> <span class='caller-token badge-paren' data-caller='伊藤理々杏' data-caller-count='1'>（伊藤理々杏）</span> <span class='caller-token badge-paren' data-caller='山下美月' data-caller-count='1'>（山下美月）</span> <span class='caller-token badge-paren' data-caller='柴田柚菜' data-caller-count='1'>（柴田柚菜）</span> <span class='caller-token badge-paren' data-caller='奥田いろは' data-caller-count='1'>（奥田いろは）</span></td><td class='count-cell'><span class='count-num'>9</span></td></tr><tr data-nick='琴子' data-callers='伊藤寧々 北野日奈子' data-caller-counts='{&quot;伊藤寧々&quot;: 2, &quot;北野日奈子&quot;: 1}' data-has-single='1' data-total='3'><td class='nick-cell'>琴子</td><td class='who-cell'><span class='caller-token badge-max' data-caller='伊藤寧々' data-caller-count='2'>伊藤寧々<span class='cnt-num'>2回</span></span> <span class='caller-token badge-paren' data-caller='北野日奈子' data-caller-count='1'>（北野日奈子）</span></td><td class='count-cell'><span class='count-num'>3</span></td></tr></tbody></table></div>
-    <div class='view' data-view='2012' style='display:none;'><table><thead><tr><th>呼び名</th><th>誰が呼んでいるか</th><th>合計回数</th></tr></thead><tbody><tr data-nick='琴子' data-callers='伊藤寧々' data-caller-counts='{&quot;伊藤寧々&quot;: 2}' data-has-single='0' data-total='2'><td class='nick-cell'>琴子</td><td class='who-cell'><span class='caller-token badge-max' data-caller='伊藤寧々' data-caller-count='2'>伊藤寧々<span class='cnt-num'>2回</span></span></td><td class='count-cell'><span class='count-num'>2</span></td></tr></tbody></table></div><div class='view' data-view='2017' style='display:none;'><table><thead><tr><th>呼び名</th><th>誰が呼んでいるか</th><th>合計回数</th></tr></thead><tbody><tr data-nick='琴子さん' data-callers='伊藤理々杏' data-caller-counts='{&quot;伊藤理々杏&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>琴子さん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='伊藤理々杏' data-caller-count='1'>（伊藤理々杏）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr></tbody></table></div><div class='view' data-view='2018' style='display:none;'><table><thead><tr><th>呼び名</th><th>誰が呼んでいるか</th><th>合計回数</th></tr></thead><tbody><tr data-nick='琴子さん' data-callers='岩本蓮加 山下美月' data-caller-counts='{&quot;岩本蓮加&quot;: 1, &quot;山下美月&quot;: 1}' data-has-single='1' data-total='2'><td class='nick-cell'>琴子さん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='岩本蓮加' data-caller-count='1'>（岩本蓮加）</span> <span class='caller-token badge-paren' data-caller='山下美月' data-caller-count='1'>（山下美月）</span></td><td class='count-cell'><span class='count-num'>2</span></td></tr></tbody></table></div><div class='view' data-view='2020' style='display:none;'><table><thead><tr><th>呼び名</th><th>誰が呼んでいるか</th><th>合計回数</th></tr></thead><tbody><tr data-nick='琴子さん' data-callers='岩本蓮加 賀喜遥香 柴田柚菜' data-caller-counts='{&quot;岩本蓮加&quot;: 2, &quot;賀喜遥香&quot;: 2, &quot;柴田柚菜&quot;: 1}' data-has-single='1' data-total='5'><td class='nick-cell'>琴子さん</td><td class='who-cell'><span class='caller-token badge-max' data-caller='岩本蓮加' data-caller-count='2'>岩本蓮加<span class='cnt-num'>2回</span></span> <span class='caller-token badge-max' data-caller='賀喜遥香' data-caller-count='2'>賀喜遥香<span class='cnt-num'>2回</span></span> <span class='caller-token badge-paren' data-caller='柴田柚菜' data-caller-count='1'>（柴田柚菜）</span></td><td class='count-cell'><span class='count-num'>5</span></td></tr></tbody></table></div><div class='view' data-view='2024' style='display:none;'><table><thead><tr><th>呼び名</th><th>誰が呼んでいるか</th><th>合計回数</th></tr></thead><tbody><tr data-nick='琴子' data-callers='北野日奈子' data-caller-counts='{&quot;北野日奈子&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>琴子</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='北野日奈子' data-caller-count='1'>（北野日奈子）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr><tr data-nick='琴子さん' data-callers='奥田いろは' data-caller-counts='{&quot;奥田いろは&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>琴子さん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='奥田いろは' data-caller-count='1'>（奥田いろは）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr></tbody></table></div>
+    <div class="view" data-view="ALL"><table><thead><tr><th>呼び名</th><th>呼ぶメンバー</th><th>合計回数</th></tr></thead><tbody><tr data-nick='琴子さん' data-callers='岩本蓮加 賀喜遥香 伊藤理々杏 山下美月 柴田柚菜 奥田いろは' data-caller-counts='{&quot;岩本蓮加&quot;: 3, &quot;賀喜遥香&quot;: 2, &quot;伊藤理々杏&quot;: 1, &quot;山下美月&quot;: 1, &quot;柴田柚菜&quot;: 1, &quot;奥田いろは&quot;: 1}' data-has-single='1' data-total='9'><td class='nick-cell'>琴子さん</td><td class='who-cell'><span class='caller-token badge-max' data-caller='岩本蓮加' data-caller-count='3'>岩本蓮加<span class='cnt-num'>3回</span></span> <span class='caller-token badge-max' data-caller='賀喜遥香' data-caller-count='2'>賀喜遥香<span class='cnt-num'>2回</span></span> <span class='caller-token badge-paren' data-caller='伊藤理々杏' data-caller-count='1'>（伊藤理々杏）</span> <span class='caller-token badge-paren' data-caller='山下美月' data-caller-count='1'>（山下美月）</span> <span class='caller-token badge-paren' data-caller='柴田柚菜' data-caller-count='1'>（柴田柚菜）</span> <span class='caller-token badge-paren' data-caller='奥田いろは' data-caller-count='1'>（奥田いろは）</span></td><td class='count-cell'><span class='count-num'>9</span></td></tr><tr data-nick='琴子' data-callers='伊藤寧々 北野日奈子' data-caller-counts='{&quot;伊藤寧々&quot;: 2, &quot;北野日奈子&quot;: 1}' data-has-single='1' data-total='3'><td class='nick-cell'>琴子</td><td class='who-cell'><span class='caller-token badge-max' data-caller='伊藤寧々' data-caller-count='2'>伊藤寧々<span class='cnt-num'>2回</span></span> <span class='caller-token badge-paren' data-caller='北野日奈子' data-caller-count='1'>（北野日奈子）</span></td><td class='count-cell'><span class='count-num'>3</span></td></tr></tbody></table></div>
+    <div class='view' data-view='2012' style='display:none;'><table><thead><tr><th>呼び名</th><th>呼ぶメンバー</th><th>合計回数</th></tr></thead><tbody><tr data-nick='琴子' data-callers='伊藤寧々' data-caller-counts='{&quot;伊藤寧々&quot;: 2}' data-has-single='0' data-total='2'><td class='nick-cell'>琴子</td><td class='who-cell'><span class='caller-token badge-max' data-caller='伊藤寧々' data-caller-count='2'>伊藤寧々<span class='cnt-num'>2回</span></span></td><td class='count-cell'><span class='count-num'>2</span></td></tr></tbody></table></div><div class='view' data-view='2017' style='display:none;'><table><thead><tr><th>呼び名</th><th>呼ぶメンバー</th><th>合計回数</th></tr></thead><tbody><tr data-nick='琴子さん' data-callers='伊藤理々杏' data-caller-counts='{&quot;伊藤理々杏&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>琴子さん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='伊藤理々杏' data-caller-count='1'>（伊藤理々杏）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr></tbody></table></div><div class='view' data-view='2018' style='display:none;'><table><thead><tr><th>呼び名</th><th>呼ぶメンバー</th><th>合計回数</th></tr></thead><tbody><tr data-nick='琴子さん' data-callers='岩本蓮加 山下美月' data-caller-counts='{&quot;岩本蓮加&quot;: 1, &quot;山下美月&quot;: 1}' data-has-single='1' data-total='2'><td class='nick-cell'>琴子さん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='岩本蓮加' data-caller-count='1'>（岩本蓮加）</span> <span class='caller-token badge-paren' data-caller='山下美月' data-caller-count='1'>（山下美月）</span></td><td class='count-cell'><span class='count-num'>2</span></td></tr></tbody></table></div><div class='view' data-view='2020' style='display:none;'><table><thead><tr><th>呼び名</th><th>呼ぶメンバー</th><th>合計回数</th></tr></thead><tbody><tr data-nick='琴子さん' data-callers='岩本蓮加 賀喜遥香 柴田柚菜' data-caller-counts='{&quot;岩本蓮加&quot;: 2, &quot;賀喜遥香&quot;: 2, &quot;柴田柚菜&quot;: 1}' data-has-single='1' data-total='5'><td class='nick-cell'>琴子さん</td><td class='who-cell'><span class='caller-token badge-max' data-caller='岩本蓮加' data-caller-count='2'>岩本蓮加<span class='cnt-num'>2回</span></span> <span class='caller-token badge-max' data-caller='賀喜遥香' data-caller-count='2'>賀喜遥香<span class='cnt-num'>2回</span></span> <span class='caller-token badge-paren' data-caller='柴田柚菜' data-caller-count='1'>（柴田柚菜）</span></td><td class='count-cell'><span class='count-num'>5</span></td></tr></tbody></table></div><div class='view' data-view='2024' style='display:none;'><table><thead><tr><th>呼び名</th><th>呼ぶメンバー</th><th>合計回数</th></tr></thead><tbody><tr data-nick='琴子' data-callers='北野日奈子' data-caller-counts='{&quot;北野日奈子&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>琴子</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='北野日奈子' data-caller-count='1'>（北野日奈子）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr><tr data-nick='琴子さん' data-callers='奥田いろは' data-caller-counts='{&quot;奥田いろは&quot;: 1}' data-has-single='1' data-total='1'><td class='nick-cell'>琴子さん</td><td class='who-cell'><span class='caller-token badge-paren' data-caller='奥田いろは' data-caller-count='1'>（奥田いろは）</span></td><td class='count-cell'><span class='count-num'>1</span></td></tr></tbody></table></div>
   </div>
 
   <div class="legend">
-    <div class="legend-item"><span class="badge-max">名前 <span class="cnt-num">N回</span></span> その人からの最多呼び名</div>
+    <div class="legend-item"><span class="badge-max">名前 <span class="cnt-num">N回</span></span> そのメンバーが最も多く使った呼び名</div>
     <div class="legend-item"><span class="badge-other">名前 <span class="cnt-num">N回</span></span> 複数回（2回以上）</div>
     <div class="legend-item"><span class="badge-paren">（名前）</span> 1回のみ</div>
   </div>
