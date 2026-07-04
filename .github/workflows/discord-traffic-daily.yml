@@ -51,10 +51,10 @@ jobs:
           LATEST_VIEWS=$(jq -r '.views[-1].count // 0' traffic.json)
           LATEST_UNIQUES=$(jq -r '.views[-1].uniques // 0' traffic.json)
 
-          DESCRIPTION=$(printf "GitHub Traffic API views were fetched.\n\nRepository: %s\nLatest timestamp: %s\nLatest views: %s\nLatest unique visitors: %s\n\nLast 14 days views: %s\nLast 14 days unique visitors: %s\n\nNote: GitHub Traffic API reports repository-level traffic and may not match exact GitHub Pages page views." "$REPOSITORY" "$LATEST_TIMESTAMP" "$LATEST_VIEWS" "$LATEST_UNIQUES" "$TOTAL_VIEWS" "$TOTAL_UNIQUES")
+          DESCRIPTION=$(printf "直近データ:\n表示回数: %s\n訪問者数: %s\n集計日時: %s\n\n過去14日間:\n表示回数: %s\n訪問者数: %s\n\n※ GitHub Traffic API の数値なので、GitHub Pages の正確なPVとは少し違う場合があります。" "$LATEST_VIEWS" "$LATEST_UNIQUES" "$LATEST_TIMESTAMP" "$TOTAL_VIEWS" "$TOTAL_UNIQUES")
 
           jq -n \
-            --arg title "Daily traffic report" \
+            --arg title "今日のアクセス状況" \
             --arg description "$DESCRIPTION" \
             --arg url "$REPOSITORY_URL" \
             '{
