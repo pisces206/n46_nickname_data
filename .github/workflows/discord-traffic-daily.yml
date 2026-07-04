@@ -1,0 +1,90 @@
+name: Discord Notify - Daily Traffic
+
+on:
+  schedule:
+    # 23:00 JST = 14:00 UTC.
+    - cron: "0 14 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    name: Notify Discord with GitHub Traffic API views
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Fetch traffic views
+        env:
+          GH_TOKEN: ${{ secrets.TRAFFIC_GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "TRAFFIC_GITHUB_TOKEN is not set."
+            exit 1
+          fi
+
+          curl --fail-with-body \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${REPOSITORY}/traffic/views?per=day" \
+            -o traffic.json
+
+          cat traffic.json
+
+      - name: Send Discord webhook
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          REPOSITORY: ${{ github.repository }}
+          REPOSITORY_URL: ${{ github.server_url }}/${{ github.repository }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "DISCORD_WEBHOOK_URL is not set."
+            exit 1
+          fi
+
+          TOTAL_VIEWS=$(jq -r '.count // 0' traffic.json)
+          TOTAL_UNIQUES=$(jq -r '.uniques // 0' traffic.json)
+          LATEST_TIMESTAMP=$(jq -r '.views[-1].timestamp // "unknown"' traffic.json)
+          LATEST_VIEWS=$(jq -r '.views[-1].count // 0' traffic.json)
+          LATEST_UNIQUES=$(jq -r '.views[-1].uniques // 0' traffic.json)
+
+          # GitHub Traffic API reports repository traffic for the last 14 days.
+          # It is not a precise GitHub Pages analytics product and may not equal
+          # actual page views of https://pisces206.github.io/n46_nickname_data.
+          # For precise site analytics, add a dedicated analytics service to the page.
+          DESCRIPTION=$(cat <<EOF
+GitHub Traffic API views were fetched.
+
+Repository: ${REPOSITORY}
+Latest timestamp: ${LATEST_TIMESTAMP}
+Latest views: ${LATEST_VIEWS}
+Latest unique visitors: ${LATEST_UNIQUES}
+
+Last 14 days views: ${TOTAL_VIEWS}
+Last 14 days unique visitors: ${TOTAL_UNIQUES}
+
+Note: GitHub Traffic API reports repository-level traffic and may not match exact GitHub Pages page views.
+EOF
+)
+
+          jq -n \
+            --arg title "Daily traffic report" \
+            --arg description "$DESCRIPTION" \
+            --arg url "$REPOSITORY_URL" \
+            '{
+              username: "GitHub Actions",
+              embeds: [{
+                title: $title,
+                description: $description,
+                url: $url,
+                color: 16776960
+              }]
+            }' > payload.json
+
+          curl --fail-with-body \
+            -H "Content-Type: application/json" \
+            -d @payload.json \
+            "$DISCORD_WEBHOOK_URL"
