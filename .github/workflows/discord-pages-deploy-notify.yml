@@ -1,7 +1,12 @@
 name: Discord Notify - GitHub Pages Deploy
 
 on:
-  deployment_status:
+  workflow_run:
+    workflows:
+      - pages-build-deployment
+    types:
+      - completed
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -11,39 +16,28 @@ jobs:
     name: Notify Discord when GitHub Pages deploy completes
     runs-on: ubuntu-latest
     if: >
-      github.event.deployment.environment == 'github-pages' &&
-      github.event.deployment_status.state == 'success'
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
 
     steps:
       - name: Send Discord webhook
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           REPOSITORY: ${{ github.repository }}
-          ACTOR: ${{ github.actor }}
-          ENVIRONMENT: ${{ github.event.deployment.environment }}
-          DEPLOY_URL: ${{ github.event.deployment_status.target_url }}
-          LOG_URL: ${{ github.event.deployment_status.log_url }}
+          PAGE_URL: https://pisces206.github.io/n46_nickname_data
+          RUN_URL: ${{ github.event.workflow_run.html_url }}
         run: |
           if [ -z "$DISCORD_WEBHOOK_URL" ]; then
             echo "DISCORD_WEBHOOK_URL is not set."
             exit 1
           fi
 
-          DESCRIPTION=$(cat <<EOF
-GitHub Pages deployment completed successfully.
-
-Repository: ${REPOSITORY}
-Environment: ${ENVIRONMENT}
-Actor: ${ACTOR}
-Deploy URL: ${DEPLOY_URL}
-Log URL: ${LOG_URL}
-EOF
-)
+          DESCRIPTION=$(printf "GitHub Pages deployment completed successfully.\n\nRepository: %s\nPage URL: %s\nRun URL: %s" "$REPOSITORY" "$PAGE_URL" "$RUN_URL")
 
           jq -n \
             --arg title "GitHub Pages deploy completed" \
             --arg description "$DESCRIPTION" \
-            --arg url "$DEPLOY_URL" \
+            --arg url "$PAGE_URL" \
             '{
               username: "GitHub Actions",
               embeds: [{
