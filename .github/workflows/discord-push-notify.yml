@@ -31,10 +31,10 @@ jobs:
           fi
 
           SHORT_SHA="${COMMIT_SHA::7}"
-          DESCRIPTION=$(printf "The main branch was updated by a push.\n\nRepository: %s\nBranch: %s\nActor: %s\nCommit: %s\nCommit URL: %s\nCompare: %s\n\nMessage:\n%s" "$REPOSITORY" "$BRANCH" "$ACTOR" "$SHORT_SHA" "$COMMIT_URL" "$COMPARE_URL" "$HEAD_MESSAGE")
+          DESCRIPTION=$(printf "n46_nickname_data に変更が反映されました。\n\n更新者: %s\nブランチ: %s\nコミット: %s\nメッセージ: %s\n\nコミットURL: %s\n比較URL: %s" "$ACTOR" "$BRANCH" "$SHORT_SHA" "$HEAD_MESSAGE" "$COMMIT_URL" "$COMPARE_URL")
 
           jq -n \
-            --arg title "GitHub Pages app updated" \
+            --arg title "サイトが更新されました" \
             --arg description "$DESCRIPTION" \
             --arg url "$COMMIT_URL" \
             '{
