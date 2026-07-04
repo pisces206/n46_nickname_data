@@ -51,24 +51,7 @@ jobs:
           LATEST_VIEWS=$(jq -r '.views[-1].count // 0' traffic.json)
           LATEST_UNIQUES=$(jq -r '.views[-1].uniques // 0' traffic.json)
 
-          # GitHub Traffic API reports repository traffic for the last 14 days.
-          # It is not a precise GitHub Pages analytics product and may not equal
-          # actual page views of https://pisces206.github.io/n46_nickname_data.
-          # For precise site analytics, add a dedicated analytics service to the page.
-          DESCRIPTION=$(cat <<EOF
-GitHub Traffic API views were fetched.
-
-Repository: ${REPOSITORY}
-Latest timestamp: ${LATEST_TIMESTAMP}
-Latest views: ${LATEST_VIEWS}
-Latest unique visitors: ${LATEST_UNIQUES}
-
-Last 14 days views: ${TOTAL_VIEWS}
-Last 14 days unique visitors: ${TOTAL_UNIQUES}
-
-Note: GitHub Traffic API reports repository-level traffic and may not match exact GitHub Pages page views.
-EOF
-)
+          DESCRIPTION=$(printf "GitHub Traffic API views were fetched.\n\nRepository: %s\nLatest timestamp: %s\nLatest views: %s\nLatest unique visitors: %s\n\nLast 14 days views: %s\nLast 14 days unique visitors: %s\n\nNote: GitHub Traffic API reports repository-level traffic and may not match exact GitHub Pages page views." "$REPOSITORY" "$LATEST_TIMESTAMP" "$LATEST_VIEWS" "$LATEST_UNIQUES" "$TOTAL_VIEWS" "$TOTAL_UNIQUES")
 
           jq -n \
             --arg title "Daily traffic report" \
