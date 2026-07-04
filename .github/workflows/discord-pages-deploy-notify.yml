@@ -1,0 +1,60 @@
+name: Discord Notify - GitHub Pages Deploy
+
+on:
+  deployment_status:
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    name: Notify Discord when GitHub Pages deploy completes
+    runs-on: ubuntu-latest
+    if: >
+      github.event.deployment.environment == 'github-pages' &&
+      github.event.deployment_status.state == 'success'
+
+    steps:
+      - name: Send Discord webhook
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          REPOSITORY: ${{ github.repository }}
+          ACTOR: ${{ github.actor }}
+          ENVIRONMENT: ${{ github.event.deployment.environment }}
+          DEPLOY_URL: ${{ github.event.deployment_status.target_url }}
+          LOG_URL: ${{ github.event.deployment_status.log_url }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "DISCORD_WEBHOOK_URL is not set."
+            exit 1
+          fi
+
+          DESCRIPTION=$(cat <<EOF
+GitHub Pages deployment completed successfully.
+
+Repository: ${REPOSITORY}
+Environment: ${ENVIRONMENT}
+Actor: ${ACTOR}
+Deploy URL: ${DEPLOY_URL}
+Log URL: ${LOG_URL}
+EOF
+)
+
+          jq -n \
+            --arg title "GitHub Pages deploy completed" \
+            --arg description "$DESCRIPTION" \
+            --arg url "$DEPLOY_URL" \
+            '{
+              username: "GitHub Actions",
+              embeds: [{
+                title: $title,
+                description: $description,
+                url: $url,
+                color: 3066993
+              }]
+            }' > payload.json
+
+          curl --fail-with-body \
+            -H "Content-Type: application/json" \
+            -d @payload.json \
+            "$DISCORD_WEBHOOK_URL"
