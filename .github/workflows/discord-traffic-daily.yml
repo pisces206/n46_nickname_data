@@ -5,6 +5,12 @@ on:
     # 22:45 JST = 13:45 UTC.
     - cron: "45 13 * * *"
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Check Traffic API authentication without sending a Discord message"
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: read
@@ -13,6 +19,7 @@ jobs:
   notify:
     name: Notify Discord with GitHub Traffic API views
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
       - name: Fetch traffic views
@@ -20,21 +27,37 @@ jobs:
           GH_TOKEN: ${{ secrets.TRAFFIC_GITHUB_TOKEN }}
           REPOSITORY: ${{ github.repository }}
         run: |
+          set -euo pipefail
           if [ -z "$GH_TOKEN" ]; then
-            echo "TRAFFIC_GITHUB_TOKEN is not set."
+            echo "::error::TRAFFIC_GITHUB_TOKEN is not set. Add it in repository Settings > Secrets and variables > Actions."
             exit 1
           fi
 
-          curl --fail-with-body \
+          HTTP_STATUS=$(curl --silent --show-error --connect-timeout 10 --max-time 60 \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${GH_TOKEN}" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             "https://api.github.com/repos/${REPOSITORY}/traffic/views?per=day" \
-            -o traffic.json
+            -o traffic.json --write-out '%{http_code}')
 
-          cat traffic.json
+          case "$HTTP_STATUS" in
+            200) ;;
+            401)
+              echo "::error::Traffic API returned HTTP 401. Renew the PAT and update the TRAFFIC_GITHUB_TOKEN repository secret."
+              exit 1 ;;
+            403)
+              echo "::error::Traffic API returned HTTP 403. Check PAT repository access, Administration: read, and API rate limits."
+              exit 1 ;;
+            *)
+              echo "::error::Traffic API returned HTTP ${HTTP_STATUS}. Check repository access and GitHub API availability."
+              exit 1 ;;
+          esac
+
+          jq -e '(.count | type == "number") and (.uniques | type == "number") and (.views | type == "array")' traffic.json > /dev/null
+          echo "Traffic API request succeeded (HTTP 200)."
 
       - name: Send Discord webhook
+        if: ${{ !inputs.dry_run }}
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           REPOSITORY: ${{ github.repository }}
@@ -51,7 +74,7 @@ jobs:
           LATEST_VIEWS=$(jq -r '.views[-1].count // 0' traffic.json)
           LATEST_UNIQUES=$(jq -r '.views[-1].uniques // 0' traffic.json)
 
-          DESCRIPTION=$(printf "直近データ:\n表示回数: %s\n訪問者数: %s\n集計日時: %s\n\n過去14日間:\n表示回数: %s\n訪問者数: %s\n\n※ GitHub Traffic API の数値なので、GitHub Pages の正確なPVとは少し違う場合があります。" "$LATEST_VIEWS" "$LATEST_UNIQUES" "$LATEST_TIMESTAMP" "$TOTAL_VIEWS" "$TOTAL_UNIQUES")
+          DESCRIPTION=$(printf "直近データ:\n表示回数: %s\n訪問者数: %s\n集計日時: %s\n\n過去14日間:\n表示回数: %s\n訪問者数: %s\n\n※ GitHubリポジトリの閲覧数です。GitHub PagesのPVではありません。" "$LATEST_VIEWS" "$LATEST_UNIQUES" "$LATEST_TIMESTAMP" "$TOTAL_VIEWS" "$TOTAL_UNIQUES")
 
           jq -n \
             --arg title "今日のアクセス状況" \
