@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pisces206.github.io/n46_nickname_data/sitemap.xml
